@@ -90,38 +90,11 @@ footer {
 }
 
 main {
-    height: 700px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-#products
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 25px;   
-}
-
-#products h2 {
-    font-size: 0.7cm;
-    padding-bottom: 35px;
-}
-
-#products p {
-    font-size: 0.5cm;
-    padding-bottom: 35px;
-}
-
-#content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.5cm;
-    width: 1000px;
-}
-    
 
 footer {
     display: flex;
@@ -147,3 +120,4 @@ footer li
     font-size: 1.2em;
 
 }
+
