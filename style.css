@@ -70,15 +70,16 @@ footer {
     justify-content: space-around;
     align-items: center;
     height: 100px;
-    background-color: rgb(231, 255, 231);
+    background-color: #f3e9f1;
     font-weight: bolder;
 }
 
-.nav_bar h1 
+.logo 
 {
-    font-family: 'Architects Daughter';
-    font-size: 1.5cm;
+    height: 100px;
+    width: auto;
 }
+
 .nav_bar a 
 {
     padding: 35px;
@@ -90,8 +91,9 @@ footer {
 }
 
 main {
-    height: 700px;
+    height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -106,7 +108,8 @@ main {
 
 #products h2 {
     font-size: 0.7cm;
-    padding-bottom: 35px;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 #products p {
@@ -116,26 +119,47 @@ main {
 
 #content {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 0.5cm;
-    border: black 1px solid;
     padding: 2rem;
     margin-bottom: 1rem;
-}
-
-#content h3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     width: auto;
 }
 
-#content h4 {
+.class_teddy {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 200px;
+    border-bottom: black 1px solid;
+    margin: 1rem;
+}
+
+.class_photo {
+    
+}
+.class_photo img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.class_info {
+    padding: 0.5cm;
+    display: flex;
+    justify-content: space-between;
+
+}
+.class_info .name_teddy {
+    font-size: medium;
+    padding-top: 10px;
+}
+
+.class_info .price_teddy {
+    font-size: small;
+    padding-top: 10px;
 }
 
 footer {
@@ -144,7 +168,7 @@ footer {
     justify-content: space-between;
     height: 100px;
     width: 100%;
-    background-color: rgb(231, 255, 231);
+    background-color: #f3e9f1;
     font-weight: bolder;
 }
 

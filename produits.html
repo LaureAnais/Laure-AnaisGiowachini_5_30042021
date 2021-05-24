@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans&family=Poppins:wght@100;200&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@100;200&display=swap" rel="stylesheet"> 
     <link rel="icon" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -13,29 +14,38 @@
 </head>
 
 <body>
-    <div id="content"></div>
-    
-<header>
-    <div class="nav_bar">
-        <a href="index.html">Accueil</a>
-        <a href="panier.html">Panier <i class="fas fa-shopping-basket"></i></a>
-    </div>
-</header>
+    <div id="bloc-page">
+        
+        
+        <header>
+            <div class="nav_bar">
+                <ul>
+                    <img class="logo" src="img/logo_orinoco.jpg" alt="logo Orinoco">
+                </ul>
+                <ul>
+                    <a href="index.html">Accueil</a>
+                    <a href="panier.html">Panier <i class="fas fa-shopping-cart"></i></a>
+                </ul>
+                
+            </div>
+        </header>
 
-<h1>Nos ours personnalisables</h1>
+        <main>
+        <h1>Nos ours personnalisables</h1>
 
-<div id="gallery">Nos oursons</div>
+        <div id="gallery">Nos oursons</div>
 
+        <div id="content"></div>
+        </main>
 
-
-<footer>
-    <ul class="footer">
-        <li>Mentions Légales</li>
-        <li>Contact</li>
-    </ul>
-</footer>
-
-<script src="index.js"></script>
+        <footer>
+            <ul class="footer">
+                <li>Mentions Légales</li>
+                <li>Contact</li>
+            </ul>
+        </footer>
+    </div>    
+    <script src="produits.js"></script>
 </body>
 
 </html>

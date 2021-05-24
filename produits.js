@@ -1,7 +1,6 @@
-fetch('http://localhost:3000/api/teddies')
-then(response => response.json(){
-    if ()
-        return
-})
 
-// utiliser Innerhtml pour modifier les oursons 
+let params = (new URL(document.location)).searchParams;
+let id = params.get('id'); 
+console.log(id)
+
+// utiliser cette méthode pour aller chercher le bon id du nounours

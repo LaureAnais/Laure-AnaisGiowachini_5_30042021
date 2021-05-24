@@ -70,15 +70,16 @@ footer {
     justify-content: space-around;
     align-items: center;
     height: 100px;
-    background-color: rgb(231, 255, 231);
+    background-color: #f3e9f1;
     font-weight: bolder;
 }
 
-.nav_bar h1 
+.logo 
 {
-    font-family: 'Architects Daughter';
-    font-size: 1.5cm;
+    height: 100px;
+    width: auto;
 }
+
 .nav_bar a 
 {
     padding: 35px;
@@ -102,7 +103,7 @@ footer {
     justify-content: space-between;
     height: 100px;
     width: 100%;
-    background-color: rgb(231, 255, 231);
+    background-color: #f3e9f1;
     font-weight: bolder;
 }
 
