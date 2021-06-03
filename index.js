@@ -4,29 +4,24 @@ fetch('http://localhost:3000/api/teddies')
     {
       // creation  gallery pour stocker les infos de l'API / ours
         const myGallery = document.getElementById('content')
+        
         let doma
+        let domDiv
         let domNom
         let domPrice
         let domDiv2
-        let domImage
+        let domImage 
+        // let domChoice
         console.log(data)
-        for(let i=0; i <data.length; i++)
-        {      
-          /*
-          doma = document.createElement("a")
-        Comment créer une balise a qui pointe vers le href du nounours / lié à la page produits.html
-        je créer une balise a 
-        le href est de la produit.html?id=id du nounours data[i]id //vérifier// 
-        DomDiv => appendchild sur le lien
-        le lien est en appendchild sur myGallery a rajouter à la fin via 
-        doma.appendChild(a)*/
+        for(let i=0; i < data.length; i++)
+        {  
           doma = document.createElement("a");
-        
+          doma.setAttribute("href", "produits.html?id=" + data[i]._id);
+                    
           domDiv = document.createElement("div");
           domDiv.className = "class_teddy";
-         /* doma.appendChild(domDiv) */
-        
-          
+          doma.appendChild(domDiv)
+                    
           domDiv2 = document.createElement("div");
           domDiv2.className = "class_photo";
           domDiv.appendChild(domDiv2)
@@ -36,7 +31,7 @@ fetch('http://localhost:3000/api/teddies')
           domDiv.appendChild(domDiv3)
 
           domDiv4 = document.createElement("div");
-          domDiv4.className = "class_choise";
+          domDiv4.className = "class_choice";
           domDiv.appendChild(domDiv4)
          
           console.log(data[i].name)
@@ -45,11 +40,9 @@ fetch('http://localhost:3000/api/teddies')
           domNom.textContent = data[i].name
           domDiv3.appendChild(domNom)
           
-          
           domPrice = document.createElement("h4")
-          domPrice.textContent = data[i].price
+          domPrice.textContent = data[i].price / 100 + " €"
           domPrice.className = "price_teddy";
-         /* domPrice.textContent = '\u20ac'*/
           domDiv3.appendChild(domPrice)
 
           domImage = document.createElement("img")
@@ -57,12 +50,27 @@ fetch('http://localhost:3000/api/teddies')
           domImage.setAttribute("alt",data[i].name)
           domImage.className = "image_teddy";
           domDiv2.appendChild(domImage)
-
-          myGallery.appendChild(domDiv)
+          
+          myGallery.appendChild(doma)
         }    
+
+      
+
+       /*
+
+       Pour ajouter l'élément cliqué par l'utilisateur dans le panier : 
+       utiliser querySelectorAll 
+       puis addEventListerner("click") car c'est quand l'utilisateur va cliquer sur le teddy que le choix va se faire
+       this data set id ? => comment récupérer l'id
         
+        => message alerte  / nounours a bien été ajouté au panier 
+
+        => affichage du panier = possibilité de supprimer un nounours de la liste
         
+
+        */
+   })
+   .catch(error => {
+     document.getElementById('content').textContent='Erreur avec le serveur'
    });
 
-
-    

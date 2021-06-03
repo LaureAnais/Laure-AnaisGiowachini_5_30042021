@@ -14,55 +14,59 @@ fetch(url)
         const showTeddy = document.getElementById("Teddy_info")
         
         // Création div de l'ourson 
-        domDivGlobal = document.createElement("div");
-        domDivGlobal.className ="Show_Teddy"
-        showTeddy.appendChild(domDivGlobal)
+        const DivGlobal = document.createElement("div");
+        DivGlobal.className ="Show_Teddy"
+        showTeddy.appendChild(DivGlobal)
         
         // Création de la div pour afficher l'image de l'ourson 
-        domImage = document.createElement("div");
+        const domImage = document.createElement("div");
         domImage.className="Teddy_Image"
-        domDivGlobal.appendChild(domImage)
+        DivGlobal.appendChild(domImage)
 
-        domImg = document.createElement("img");
+        const domImg = document.createElement("img");
         domImg.className="Teddy_Img"
         domImg.setAttribute("src",data.imageUrl)
         domImg.setAttribute("alt",data.name)
         domImage.appendChild(domImg)
         
         // Création de la div avec l'ensemble des informations sur l'ourson 
-        domDataGlobal = document.createElement("div");
-        domDataGlobal.className="Teddy_info"
-        domDivGlobal.appendChild(domDataGlobal)
+        const DataGlobal = document.createElement("div");
+        DataGlobal.className="Teddy_info"
+        DivGlobal.appendChild(DataGlobal)
 
         // Création de la div pour englober le nom et prix de l'ourson 
-        domData = document.createElement("div")
+        const domData = document.createElement("div")
         domData.className="Info"
-        domDataGlobal.appendChild(domData)
+        DataGlobal.appendChild(domData)
 
-        domNom = document.createElement("h3");
+        const domNom = document.createElement("h3");
         domNom.className="Teddy_Name"
         domNom.textContent=data.name
         domData.appendChild(domNom)
 
-       domPrice = document.createElement("span")
+       const domPrice = document.createElement("span")
        domPrice.className="Teddy_Price"
        domPrice.textContent=data.price / 100 + " €";
        domData.appendChild(domPrice)
 
        // Création div pour le choix de couleur de l'ourson 
-       domColour = document.createElement("div")
-       domColour.className="Teddy_Color"
-       domDataGlobal.appendChild(domColour)
+       const domForm = document.createElement("form")
+       DataGlobal.appendChild(domForm)
+       
+       const domColour = document.createElement("div")
+       domColour.className="Teddy_Colour"
+       domForm.appendChild(domColour)
         
        // Création d'un label pour indiquer le choix de couleur de l'ourson
-        const label = document.createElement("label");
-        domColour.appendChild(label)
-        label.textContent = "Choissisez sa couleur : ";
-        label.setAttribute('for' , "Choix de la couleur de " + data.name)
+        const domlabel = document.createElement("label")
+        domColour.appendChild(domlabel)
+        domlabel.textContent = "Choissisez sa couleur : ";
+        domlabel.setAttribute('for' , "Choix de la couleur de " + data.name)
 
         // Création d'un selecteur pour choisir la couleur de l'ourson   
         const mySelect = document.createElement("select");
         domColour.appendChild(mySelect) 
+        mySelect.className="select_colour"
 
         // Affichage des couleurs et choix de la couleur préférée
         // Création d'une boucle avec plusieurs options
@@ -77,22 +81,86 @@ fetch(url)
         }
 
        // Création d'une div pour la description de l'ourson (texte)   
-       domInfo = document.createElement("div")
+       const domInfo = document.createElement("div")
        domInfo.className="Teddy_Description"
        domInfo.textContent=data.description
-       domDataGlobal.appendChild(domInfo)
+       DataGlobal.appendChild(domInfo)
 
-       // Création d'un élément bouton pour ajouter l'ourson au panier 
-       domChoice = document.createElement("button")
-       domChoice.className = "btn_like";
-       domChoice.textContent = "Ajoutez au panier"
-       domDataGlobal.appendChild(domChoice)
+       // Création d'un bouton pour ajouter l'ourson au panier 
+       const addTeddy = document.createElement("button")
+       addTeddy.className = "btn_like";
+       addTeddy.textContent = "Ajoutez au panier"
+       domForm.appendChild(addTeddy);
 
-       // ajouter lien sur btn pour envoyer vers le panier. Meme méthode que pour avoir le bon nounours
-       // méthode push?
+       addTeddy.type = "submit";
+       addTeddy.name = "add";
+       addTeddy.id = "submit";
+      
+       
+        
+       // Lier le bouton au panier 
+       // addEvenListener => créer un évent sur mon bouton 
+       addTeddy.addEventListener("click", function(event){
+         // si l'event n'est pas traité, l'event continue à se propager 
+          event.preventDefault();
 
-       // attention dans le panier si on ajoute 2 produits (local storage??) que le 2nd écrase pas le 1er
+          // Mettre le choix du formulaire dans une variable (id=submit)
+          let teddySelected = {
+            productName: data.name,
+            idproduct: data._id,
+            colors: data.colors,
+            quantity: 1,
+            price: data.prix / 100
+          }
+      // data ou submit ou Teddy_info ?? submit = l'id du nounours selectionné 
+        })
+       
+       // Stocker les données des ou du teddy choisi => dans local storage
+       
+     
 
+    /*
+       // Créer une variable Basket qui contient les éléments de mon panier
+      function addBasket("submit"){
+        let listTeddySelected = getBasket();
+        // j'ajoute un teddy dans mon panier via .push
+        // ici "Teddy_info" = est l'ID de l'article selectionné
+        listTeddySelected.push("submit");
+        // enregistre l'article qui vient d'etre ajouter et on lui passe le tableau d'article selectionné
+        saveBasket(listTeddySelected);
+      }
+      
+      function getBasket(){
+        let listTeddySelected = localStorage.getItem("listTeddySelected");
+        // si listTeddySelected n'existe pas => null donc il faut retourner un tableau vide 
+        if (listTeddySelected == null){
+          return []
+        } else 
+        // si listTeddySelected existe alors je retourne un JSON.parse de la listTeddySelected      
+        return JSON.parse(listTeddySelected);
+      }
+            
+      // serialisation des données       
+      function saveBasket(listTeddySelected){
+        localStorage.setItem("listTeddySelected",JSON.stringify(listTeddySelected))
+      }    
+
+      function clearBasket(listTeddySelected){
+        localStorage.clear();
+      }
+
+
+      
+    // Faire un popup pour informé que le produit a bien été ajouté au panier
+     const confirmationOrder = () => {
+       if() {
+         // confirmation
+       } else {
+         // retour à la page produit ("échec de la selection")
+       }
+
+     }
+      */
     }); 
     
 

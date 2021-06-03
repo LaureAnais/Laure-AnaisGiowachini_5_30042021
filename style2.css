@@ -97,6 +97,11 @@ main {
     justify-content: center;
 }
 
+.Teddy_colour {
+    font-family: 'poppins';
+    font-size: medium;
+}
+
 footer {
     display: flex;
     align-items: center;

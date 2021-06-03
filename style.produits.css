@@ -98,83 +98,88 @@ main {
     justify-content: center;
 }
 
-#products
-{
+main h1 {
+    padding-top: 25px;
+}
+
+
+#Teddy_info {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 25px;   
-}
-
-#products h2 {
-    font-size: 0.7cm;
-    padding-bottom: 15px;
-    padding-top: 15px;
-}
-
-#products p {
-    font-size: 0.5cm;
-    padding-bottom: 35px;
-}
-
-#content {
-    display: flex;
-    flex-wrap: wrap;
+    width: 600px;
     align-items: center;
     justify-content: space-around;
     font-size: 0.5cm;
-    padding: 2rem;
+    padding: 3rem;
     margin-bottom: 1rem;
-    width: auto;
 }
 
-.class_teddy {
+.Show_Teddy {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 250px;
-    border-bottom: black 1px solid;
+    justify-content: space-around;
+    width: 650px;
     margin: 1rem;
-}
-
-
-.class_photo {
-    align-items: center;
-}
-.class_photo img {
-    width: 250px;
-    height: 150px;
-    object-fit: cover;
     
 }
 
-.class_info {
-    padding: 0.5cm;
-    display: flex;
-    justify-content: space-between;
 
-}
-.class_info .name_teddy {
+.Teddy_colour {
+    font-family: 'poppins';
     font-size: medium;
-    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.class_info .price_teddy {
+.select_colour {
     font-size: small;
-    padding-top: 10px;
+    
+}
+.info {
+    display: flex;
+    align-items: flex-start;
+    font-size: medium;
 }
 
-.class_choice {
-    display: flex;
-    align-items: flex-end;
+.info h3 {
+    padding-right: 10px;
+    margin-bottom: 5px;
+
 }
+
+
+.data_teddy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 1rem;
+    font-size: medium;
+}
+
+
+.Picture {
+    align-items: center;
+}
+.Teddy_image img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    padding-right: 20px;
+    
+}
+
+.Teddy_Description {
+    font-family: 'poppins';
+    font-size: medium;
+}
+
 .btn_like {
     background-color: white;
     border: white;
     font-family: 'poppins';
     font-size: medium;
-    padding-left: 60px;
+    font-weight: bold;
+    padding-bottom: 10px;
 }
+
 
 footer {
     display: flex;
