@@ -110,9 +110,19 @@ fetch(url)
             idproduct: data._id,
             colors: data.colors,
             quantity: 1,
-            price: data.prix / 100
+            price: data.price / 100
           }
-      // data ou submit ou Teddy_info ?? submit = l'id du nounours selectionné 
+          console.log(teddySelected)
+          let basket
+          let listTeddySelected = localStorage.getItem("listTeddySelected");
+          if (listTeddySelected == null){
+            basket =  []
+          } else {
+            let basket = JSON.parse(listTeddySelected);
+            basket.push(teddySelected);
+            localStorage.setItem("listTeddySelected",JSON.stringify(basket))
+          }     
+         
         })
        
        // Stocker les données des ou du teddy choisi => dans local storage
@@ -132,6 +142,7 @@ fetch(url)
       
       function getBasket(){
         let listTeddySelected = localStorage.getItem("listTeddySelected");
+        //getItem je récupère ce qui est en storage
         // si listTeddySelected n'existe pas => null donc il faut retourner un tableau vide 
         if (listTeddySelected == null){
           return []
@@ -140,7 +151,7 @@ fetch(url)
         return JSON.parse(listTeddySelected);
       }
             
-      // serialisation des données       
+      // serialisation des données  => le setItem mets en storage      
       function saveBasket(listTeddySelected){
         localStorage.setItem("listTeddySelected",JSON.stringify(listTeddySelected))
       }    
