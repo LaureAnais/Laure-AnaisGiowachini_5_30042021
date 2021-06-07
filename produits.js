@@ -117,6 +117,9 @@ fetch(url)
           let listTeddySelected = localStorage.getItem("listTeddySelected");
           if (listTeddySelected == null){
             basket =  []
+            basket.push(teddySelected);
+            localStorage.setItem("listTeddySelected",JSON.stringify(basket))
+
           } else {
             let basket = JSON.parse(listTeddySelected);
             basket.push(teddySelected);
@@ -124,7 +127,7 @@ fetch(url)
           }     
          
         })
-       
+
        // Stocker les données des ou du teddy choisi => dans local storage
        
      

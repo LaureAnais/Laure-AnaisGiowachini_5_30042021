@@ -93,12 +93,46 @@ footer {
 main {
     height: 400px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+#basket {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding-top: 20px;
+}
+
+.basket_info {
+    display: flex;
+    width: 800px;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 1px solid black;
+    margin: 3px;
+}
+
+.name {
+    width: 65px;
+}
 .Teddy_colour {
     font-family: 'poppins';
+    font-size: medium;
+}
+
+.Basket_empty {
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.btn_deleted {
+    background-color: white;
+    border: white;
     font-size: medium;
 }
 
