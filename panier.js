@@ -8,22 +8,25 @@ if (listTeddySelected == null){
   // attribuer une valeur à main ???? QUOI ???
 
   // Création d'une div pour montrer les éléments du panier 
-  let maindiv = document.createElement("div")
-  maindiv.className = "show_basket";
-  main.appendChild(maindiv)
+  let mainDiv = document.createElement("div")
+  mainDiv.className = "show_basket";
+  main.appendChild(mainDiv)
 
   let divText = document.createElement("div")
   divText.className = "Basket_empty"
   divText.textContent = "Votre panier est vide!";
-  maindiv.appendChild(divText)
+  mainDiv.appendChild(divText)
  
  // console.log("Votre panier est vide!")
 
 } else {
     // s'il y a quelque chose dans le panier : récupérer les informations
-    // console.log("Il y a un produit dans le panier")
+    console.log("Il y a un produit dans le panier")
     let basket = JSON.parse(listTeddySelected);
     console.log(basket)
+
+    let totalAccount = 0
+
     for(let i = 0; i < basket.length; i++){
       console.log(basket[i].productName)
       // mettre une class à ma div id basket pour rattacher domDiv
@@ -32,27 +35,26 @@ if (listTeddySelected == null){
       // attribuer une valeur à main ???? QUOI ???
 
       // Création d'une div pour montrer les éléments du panier 
-      let maindiv = document.createElement("div")
-      maindiv.className = "show_basket";
-      main.appendChild(maindiv)
+      let mainDiv = document.createElement("div")
+      mainDiv.className = "show_basket";
+      main.appendChild(mainDiv)
 
       // Création d'une div pour donner les infos sur le teddy selectionné 
       divShow = document.createElement('div');
       divShow.className = "basket_info";
-      maindiv.appendChild(divShow)
+      mainDiv.appendChild(divShow)
 
       // Création d'une div image pour montrer l'image du teddy selectionné
       divImage = document.createElement("div");
       divImage.className = "image";
-      maindiv.appendChild(divImage)
-/*
+      mainDiv.appendChild(divImage)
+      /*
       divImg = document.createElement("img")
-      divImg.setAttribute("src",basket[i].imageUrl)
-      divImg.setAttribute("alt",basket[i].productImage)
+      divImg.setAttribute("src",basket[i].image)
+      divImg.setAttribute("alt",basket[i].productName)
       divImg.className = "image_teddy";
       divImage.appendChild(divImg)
-
-*/      
+      */
 
       // Création d'une div pour le nom du teddy selectionné
       divName = document.createElement("div")
@@ -64,6 +66,7 @@ if (listTeddySelected == null){
       divPrice = document.createElement("div")
       divPrice.className = "price";
       divPrice.textContent = basket[i].price + " €";  
+      totalAccount = totalAccount+Number(basket[i].price)
       divShow.appendChild(divPrice)
 
       // Création d'une div pour la quantité du teddy selectionné 
@@ -78,27 +81,42 @@ if (listTeddySelected == null){
       deleteTeddy.textContent = "Supprimer"
       divShow.appendChild(deleteTeddy);
 
-      deleteTeddy.type ="submit";
       deleteTeddy.name = "delete";
-      deleteTeddy.id ="submit";
       
+      deleteTeddy.addEventListener("click", function(event){
+        console.log(i);
+        basket.splice(i,1)
+        localStorage.setItem("listTeddySelected",JSON.stringify(basket))
+        // après la suppression -> rechercher la page
+        document.location.reload()
+      })  
+      
+    }
+      // Creer une div ici pour afficher le montant total du panier 
+      divTotalAccount = document.createElement('div')
+      divTotalAccount.className = "Total_Basket";
+      divTotalAccount.textContent = "Montant total de votre commande :  "
+     // ne fonctionne pas !!!!!!!!!!!!!!! main.appendChild(divTotalAccount)
+      console.log(totalAccount)
+
+
+      // Création d'une div pour supprimer tout le panier 
+      const DeleteAll = document.getElementsByTagName("main");
+
+      let deleteDiv = document.createElement("div")
+      deleteDiv.className = "delete_all_basket";
+      deleteDiv.textContent = "Supprimer le panier"
+      deleteDiv.addEventListener("click", function(event){
+        console.log('vider le panier')
+        localStorage.removeItem('listTeddySelected')
+        // pour supprimer les éléments du panier et revenir à la page html vierge
+        document.location.reload()
+      })
+      DeleteAll[0].appendChild(deleteDiv)
     }   
 
-    let binButton = document.getElementsByClassName("btn_deleted");
-    for (let i=0; i < binButton.length; i++) {
-        binButton.addEventListener("click", function(event){
-          event.preventDefault();
-          // Suppression de l'article 
-          
-
-          // Enregistrement du nouveau localStorage
-          localStorage.setItem("listTeddySelected",JSON.stringify(listTeddySelected))
-          JSON.parse(localStorage.getItem('basket'))
-
-          // Message de suppression de l'article 
-          alert("L'article sélectionné a bien été supprimé!")
-        })
-    }
-}
-
-
+      
+ /*
+    
+       
+    // Création d'un formulaire */

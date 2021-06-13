@@ -109,6 +109,7 @@ fetch(url)
             productName: data.name,
             idproduct: data._id,
             colors: data.colors,
+            image: data.imageUrl,
             quantity: 1,
             price: data.price / 100
           }
