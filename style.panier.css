@@ -102,6 +102,11 @@ main h1 {
     padding-top : 20px;
 }
 
+.image_teddy {
+    width: 100px;
+    height: auto;
+}
+
 #basket {
     display: flex;
     flex-direction: column;
@@ -139,6 +144,28 @@ main h1 {
     background-color: white;
     border: white;
     font-size: medium;
+}
+
+.delete_all_basket {
+    padding : 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: large;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background-color: rgb(241, 236, 236);
+}
+
+.Total_Basket {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: large;
+    font-variant: small-caps;
+}
+
+.order_form h2 {
+    font-size: large;
+    padding: 10px;
 }
 
 footer {

@@ -44,18 +44,13 @@ if (listTeddySelected == null){
       divShow.className = "basket_info";
       mainDiv.appendChild(divShow)
 
-      // Création d'une div image pour montrer l'image du teddy selectionné
-      divImage = document.createElement("div");
-      divImage.className = "image";
-      mainDiv.appendChild(divImage)
-      /*
+      // Création d'une div image pour montrer l'image du teddy selectionné      
       divImg = document.createElement("img")
       divImg.setAttribute("src",basket[i].image)
       divImg.setAttribute("alt",basket[i].productName)
       divImg.className = "image_teddy";
-      divImage.appendChild(divImg)
-      */
-
+      divShow.appendChild(divImg)
+    
       // Création d'une div pour le nom du teddy selectionné
       divName = document.createElement("div")
       divName.className = "name";
@@ -88,18 +83,20 @@ if (listTeddySelected == null){
         basket.splice(i,1)
         localStorage.setItem("listTeddySelected",JSON.stringify(basket))
         // après la suppression -> rechercher la page
-        document.location.reload()
+        document.location.reload()        
       })  
-      
+    
     }
-      // Creer une div ici pour afficher le montant total du panier 
-      divTotalAccount = document.createElement('div')
-      divTotalAccount.className = "Total_Basket";
-      divTotalAccount.textContent = "Montant total de votre commande :  "
-     // ne fonctionne pas !!!!!!!!!!!!!!! main.appendChild(divTotalAccount)
-      console.log(totalAccount)
 
-
+     // Creer une div ici pour afficher le montant total du panier 
+     const TotalAccount = document.getElementsByTagName("main");
+     
+     divTotalAccount = document.createElement('div')
+     divTotalAccount.className = "Total_Basket";
+     divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
+     TotalAccount[0].appendChild(divTotalAccount)
+     console.log(totalAccount)
+      
       // Création d'une div pour supprimer tout le panier 
       const DeleteAll = document.getElementsByTagName("main");
 
@@ -113,10 +110,89 @@ if (listTeddySelected == null){
         document.location.reload()
       })
       DeleteAll[0].appendChild(deleteDiv)
+
+       // Création d'un formulaire 
+       const form = document.getElementsByTagName("main");
+
+       let divForm = document.createElement("form");
+       divForm.className = "order_form";
+       form[0].appendChild(divForm)
+
+      let formTitle = document.createElement("h2");
+      formTitle.textContent = "Afin de valider votre commande, merci de remplir ce formulaire : "
+      divForm.appendChild(formTitle)
+
+      // Formulaire - Ajout du prénom 
+      let divFirstName = document.createElement("div");
+      divFirstName.className = "form_firsname";
+      divFirstName.textContent = "Votre prénom : ";
+      divFirstName.setAttribute("for","prénom")
+      divForm.appendChild(divFirstName)
+
+      let firstName = document.createElement("input");
+      divFirstName.appendChild(firstName);
+      firstName.setAttribute('type', 'text');
+      firstName.setAttribute('class', 'name');
+      firstName.name = "Prénom"
+      firstName.required = true;
+
+
+      // vérification des informations enregistrées - nom 
+
+
+      // Formulaire - Ajout du nom
+      let divLastName = document.createElement("div");
+      divLastName.className = "form_lastname";
+      divLastName.textContent = "Votre nom : ";
+      divLastName.setAttribute("for","nom")
+      divForm.appendChild(divLastName)
+
+      let lastName = document.createElement("input");
+      divLastName.appendChild(lastName);
+      lastName.setAttribute('type', 'text');
+      lastName.setAttribute('class', 'name');
+      lastName.name = "Nom"
+      lastName.required = true;
+
+
+      // vérification des informations enregistrées - nom
+
+
+      // Formulaire - Ajout de l'adresse 
+      let divAddress = document.createElement("div");
+      divAddress.className = "form_adresse";
+      divAddress.textContent = "Votre adresse : ";
+      divAddress.setAttribute("for","adresse")
+      divForm.appendChild(divAddress)
+
+      let address = document.createElement('textarea');
+      divAddress.appendChild(address);
+      address.setAttribute('type', 'text');
+      address.setAttribute('class', 'name');
+      address.name = "Adresse"
+      address.required = true;
+
+
+      // vérification des informations enregistrées - adresse  
+
+
+      // Formulaire - Ajout de la ville 
+      let divCity = document.createElement("div");
+      divCity.className = "form_city";
+      divCity.textContent = "Votre ville : ";
+      divCity.setAttribute("for","ville")
+      divForm.appendChild(divCity)
+
+      let city = document.createElement("input");
+      divCity.appendChild(city);
+      city.setAttribute('type', 'text');
+      city.setAttribute('class', 'name');
+      city.name = "Adresse"
+      city.required = true;
     }   
 
       
- /*
+ 
     
        
-    // Création d'un formulaire */
+   
