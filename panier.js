@@ -121,7 +121,7 @@ if (listTeddySelected == null){
       let formTitle = document.createElement("h2");
       formTitle.textContent = "Afin de valider votre commande, merci de remplir ce formulaire : "
       divForm.appendChild(formTitle)
-
+      
       // Formulaire - Ajout du prénom 
       let divFirstName = document.createElement("div");
       divFirstName.className = "form_firsname";
@@ -137,7 +137,10 @@ if (listTeddySelected == null){
       firstName.required = true;
 
 
-      // vérification des informations enregistrées - nom 
+      // vérification des informations enregistrées - prénom
+      function checkDataForm(champ)
+     
+       
 
 
       // Formulaire - Ajout du nom
@@ -187,8 +190,43 @@ if (listTeddySelected == null){
       divCity.appendChild(city);
       city.setAttribute('type', 'text');
       city.setAttribute('class', 'name');
-      city.name = "Adresse"
+      city.name = "Ville"
       city.required = true;
+      
+      // vérification des informations enregistrées - city
+
+
+      // Formulaire - Ajout de l'email 
+      let divEmail = document.createElement("div");
+      divEmail.className = "form_city";
+      divEmail.textContent = "Votre email : ";
+      divEmail.setAttribute("for","email")
+      divForm.appendChild(divEmail)
+
+      let email = document.createElement("input");
+      divEmail.appendChild(email);
+      email.setAttribute('type', 'email');
+      email.setAttribute('class', 'name');
+      email.name = "Email"
+      email.required = true;
+      
+      // vérification des informations enregistrées - @
+
+
+      // Création couleur en arrière plan si le formulaire n'est pas correctement rempli 
+        function highlight (champ, erreur) {
+          if (erreur)
+          champ.style.backgroundColor= "#fba";
+          else 
+          champ.style.backgroundColor="";
+        }
+
+
+      // Création d'un bouton validation du panier 
+
+      // Envoie des données panier et formulaire contact au serveur - si formulaire valide
+
+
     }   
 
       
