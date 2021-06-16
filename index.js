@@ -55,20 +55,6 @@ fetch('http://localhost:3000/api/teddies')
         }    
 
       
-
-       /*
-
-       Pour ajouter l'élément cliqué par l'utilisateur dans le panier : 
-       utiliser querySelectorAll 
-       puis addEventListerner("click") car c'est quand l'utilisateur va cliquer sur le teddy que le choix va se faire
-       this data set id ? => comment récupérer l'id
-        
-        => message alerte  / nounours a bien été ajouté au panier 
-
-        => affichage du panier = possibilité de supprimer un nounours de la liste
-        
-
-        */
    })
    .catch(error => {
      document.getElementById('content').textContent='Erreur avec le serveur'

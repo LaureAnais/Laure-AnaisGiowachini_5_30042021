@@ -1,11 +1,11 @@
 
-// faire apparaitre TOUS les teddy selectionné 
+//************************ CREATION DE LA PAGE PANIER - FAIRE APPARAITRE TOUS LES TEDDY SELECTIONNES ****************************************
+
 
 let listTeddySelected = localStorage.getItem("listTeddySelected");
 if (listTeddySelected == null){
   // Récupérer l'id de mon document html
   const main = document.getElementById("basket");
-  // attribuer une valeur à main ???? QUOI ???
 
   // Création d'une div pour montrer les éléments du panier 
   let mainDiv = document.createElement("div")
@@ -17,7 +17,7 @@ if (listTeddySelected == null){
   divText.textContent = "Votre panier est vide!";
   mainDiv.appendChild(divText)
  
- // console.log("Votre panier est vide!")
+  console.log("Votre panier est vide!")
 
 } else {
     // s'il y a quelque chose dans le panier : récupérer les informations
@@ -26,6 +26,8 @@ if (listTeddySelected == null){
     console.log(basket)
 
     let totalAccount = 0
+
+  //***************************** LE PANIER CONTIENT DES TEDDY -  CREATION DES ELEMENTS DU PANIER ****************************************
 
     for(let i = 0; i < basket.length; i++){
       console.log(basket[i].productName)
@@ -88,6 +90,8 @@ if (listTeddySelected == null){
     
     }
 
+      //************************************* CALCUL MONTANT TOTAL PANIER  ****************************************
+
      // Creer une div ici pour afficher le montant total du panier 
      const TotalAccount = document.getElementsByTagName("main");
      
@@ -96,6 +100,8 @@ if (listTeddySelected == null){
      divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
      TotalAccount[0].appendChild(divTotalAccount)
      console.log(totalAccount)
+
+     //************************************* CREATION DES BOUTONS DU PANIER  ****************************************
 
       // Création d'une div pour englober les boutons du panier 
       const ButtonBasket = document.getElementsByTagName("main");
@@ -115,6 +121,8 @@ if (listTeddySelected == null){
         // pour supprimer les éléments du panier et revenir à la page html vierge
         document.location.reload()
       })
+
+      //************************************* CREATION DU FORMULAIRE ****************************************
     
        // Création d'un formulaire 
        const form = document.getElementsByTagName("main");
@@ -288,21 +296,21 @@ if (listTeddySelected == null){
      
       const validCity = function (inputCity) {
         console.log(inputCity)
-      let cityRegExp = new RegExp(
-        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+          let cityRegExp = new RegExp(
+            '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
-        // Test expression régulière
-        let testCity = cityRegExp.test(inputCity.value);
-        let small = document.getElementById('pcity')
-        if (testCity) {
-          small.innerHTML = 'Adresse valide';
-          small.classList.remove('text-danger');
-          small.classList.add('text-success');
-        } else {
-          small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
-          small.classList.remove('text-success');
-          small.classList.add('text-danger');
-        }
+            // Test expression régulière
+            let testCity = cityRegExp.test(inputCity.value);
+            let small = document.getElementById('pcity')
+            if (testCity) {
+              small.innerHTML = 'Adresse valide';
+              small.classList.remove('text-danger');
+              small.classList.add('text-success');
+            } else {
+              small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+              small.classList.remove('text-success');
+              small.classList.add('text-danger');
+            }
      };
 
       // Formulaire - Ajout de l'email 
@@ -330,24 +338,24 @@ if (listTeddySelected == null){
      
       const validEmail = function (inputEmail) {
         console.log(inputEmail)
-      let emailRegExp = new RegExp(
-        '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
+          let emailRegExp = new RegExp(
+            '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
 
-        // Test expression régulière
-        let testEmail = emailRegExp.test(inputEmail.value);
-        let small = document.getElementById('pemail')
-        if (testEmail) {
-          small.innerHTML = 'Adresse valide';
-          small.classList.remove('text-danger');
-          small.classList.add('text-success');
-        } else {
-          small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse est invalide';
-          small.classList.remove('text-success');
-          small.classList.add('text-danger');
-        }
+            // Test expression régulière
+            let testEmail = emailRegExp.test(inputEmail.value);
+            let small = document.getElementById('pemail')
+            if (testEmail) {
+              small.innerHTML = 'Adresse valide';
+              small.classList.remove('text-danger');
+              small.classList.add('text-success');
+            } else {
+              small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse est invalide';
+              small.classList.remove('text-success');
+              small.classList.add('text-danger');
+            }
      };
 
-     
+          //************************************* CREATION BOUTON VALIDATION PANIER ************************************** 
 
       // Création d'un bouton validation du panier 
       let validateDiv = document.createElement("div")
@@ -357,12 +365,11 @@ if (listTeddySelected == null){
 
      
 
-
-      // Valider le formulaire pour l'envoyer à l'API
+      //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
+      
       // Selection du bouton envoyer le formulaire 
       const ButtonSendForm = document.querySelector("#order_form");
-    //   console.log(document.querySelector("#order_form")) 
-
+    
 
       // Add event listener sur le bouton d'envoie du formulaire
 
@@ -383,36 +390,38 @@ if (listTeddySelected == null){
        // Mettre formValue dans localStorage
        localStorage.setItem("formValue", JSON.stringify(formValue)); 
 
-  /*    // Mettre les valeurs du formulaire dans un objet 
-          const Form = {
-            Prénom: localStorage.getItem("Prénom"),
-            Nom: localStorage.getItem("Nom"),
-            Adresse: localStorage.getItem("Adresse"),
-            Ville: localStorage.getItem("Ville"),
-            Email: localStorage.getItem("Email"),
+       // Attention le formulaire ne doit pas pouvoir s'envoyer si ls info remplies ne sont pas valides
+       // + on doit récupérer le montant total de la commande => total account 
+       // UTILISER LA METHODE POST 
+       // AVOIR UNE GESTION DES ERREURS => OOPS UNE ERREUR EST ARRIVEE 
 
-          }
-          console.log("Form");
-           console.log(Form); */
+       // A envoyer dans le serveur 
+        let url = "http://localhost:3000/api/teddies/order";
 
-           // Attention le formulaire ne doit pas pouvoir s'envoyer si ls info remplies ne sont pas valides
+        const sendToApi = new XMLHttpRequest();
+        sendToApi.open('POST', 'somewhere', true);
+        sendToApi.setRequestHeader('Content-type', 'http://localhost:3000/api/teddies/order');
+        sendToApi.onload = function () {
+          // do something to response
+          console.log(this.responseText);
+      };
+      sendToApi.send('');
+       
 
-      // A envoyer dans le serveur 
-        const sendToApi = {
-          ButtonSendForm,
-          formValue
+        //  ButtonSendForm,
+        //   formValue
         }
-        console.log("sendToApi")
-        console.log(sendToApi)
-      })
+        
+      )
 
-      
-
-    
-        // Ajouter une alerte avant la validation du panier pour que le formulaire soit rempli
+      // Ajouter une alerte avant la validation du panier pour que le formulaire soit rempli
       
 
       // Envoie des données panier et formulaire contact au serveur - si formulaire valide ++ du montant global du panier
+    
+      
+
+
 
 
     }   

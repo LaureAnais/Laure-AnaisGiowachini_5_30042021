@@ -130,52 +130,7 @@ fetch(url)
         })
 
        // Stocker les données des ou du teddy choisi => dans local storage
-       
-     
-
-    /*
-       // Créer une variable Basket qui contient les éléments de mon panier
-      function addBasket("submit"){
-        let listTeddySelected = getBasket();
-        // j'ajoute un teddy dans mon panier via .push
-        // ici "Teddy_info" = est l'ID de l'article selectionné
-        listTeddySelected.push("submit");
-        // enregistre l'article qui vient d'etre ajouter et on lui passe le tableau d'article selectionné
-        saveBasket(listTeddySelected);
-      }
       
-      function getBasket(){
-        let listTeddySelected = localStorage.getItem("listTeddySelected");
-        //getItem je récupère ce qui est en storage
-        // si listTeddySelected n'existe pas => null donc il faut retourner un tableau vide 
-        if (listTeddySelected == null){
-          return []
-        } else 
-        // si listTeddySelected existe alors je retourne un JSON.parse de la listTeddySelected      
-        return JSON.parse(listTeddySelected);
-      }
-            
-      // serialisation des données  => le setItem mets en storage      
-      function saveBasket(listTeddySelected){
-        localStorage.setItem("listTeddySelected",JSON.stringify(listTeddySelected))
-      }    
-
-      function clearBasket(listTeddySelected){
-        localStorage.clear();
-      }
-
-
-      
-    // Faire un popup pour informé que le produit a bien été ajouté au panier
-     const confirmationOrder = () => {
-       if() {
-         // confirmation
-       } else {
-         // retour à la page produit ("échec de la selection")
-       }
-
-     }
-      */
     }); 
     
 
