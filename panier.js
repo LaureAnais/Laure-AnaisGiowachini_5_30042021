@@ -96,11 +96,17 @@ if (listTeddySelected == null){
      divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
      TotalAccount[0].appendChild(divTotalAccount)
      console.log(totalAccount)
-      
-      // Création d'une div pour supprimer tout le panier 
-      const DeleteAll = document.getElementsByTagName("main");
 
+      // Création d'une div pour englober les boutons du panier 
+      const ButtonBasket = document.getElementsByTagName("main");
+
+      let divButton = document.createElement("div")
+      divButton.className = "basket_button";
+      ButtonBasket[0].appendChild(divButton)
+     
+      // Création d'une div pour supprimer tout le panier 
       let deleteDiv = document.createElement("div")
+      divButton.appendChild(deleteDiv)
       deleteDiv.className = "delete_all_basket";
       deleteDiv.textContent = "Supprimer le panier"
       deleteDiv.addEventListener("click", function(event){
@@ -109,13 +115,12 @@ if (listTeddySelected == null){
         // pour supprimer les éléments du panier et revenir à la page html vierge
         document.location.reload()
       })
-      DeleteAll[0].appendChild(deleteDiv)
-
+    
        // Création d'un formulaire 
        const form = document.getElementsByTagName("main");
 
        let divForm = document.createElement("form");
-       divForm.className = "order_form";
+       divForm.id = "order_form";
        form[0].appendChild(divForm)
 
       let formTitle = document.createElement("h2");
@@ -132,17 +137,40 @@ if (listTeddySelected == null){
       let firstName = document.createElement("input");
       divFirstName.appendChild(firstName);
       firstName.setAttribute('type', 'text');
-      firstName.setAttribute('class', 'name');
+      firstName.setAttribute('id', 'firstname');
       firstName.name = "Prénom"
       firstName.required = true;
 
 
       // vérification des informations enregistrées - prénom
-      function checkDataForm(champ)
+      let pfirstname = document.createElement('p')
+      pfirstname.setAttribute('id', 'pfirstname');
+      divFirstName.appendChild(pfirstname);
+      
      
-       
+      firstName.addEventListener('change', function(){
+       validFirstName(this);
+     });
+     
+      const validFirstName = function (inputFirstName) {
+        console.log(inputFirstName)
+      let firstnameRegExp = new RegExp(
+        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
-
+          // Test expression régulière
+          let testFirstName = firstnameRegExp.test(inputFirstName.value);
+          let small = document.getElementById('pfirstname')
+          if (testFirstName) {
+            small.innerHTML = 'Prénom valide';
+            small.classList.remove('text-danger');
+            small.classList.add('text-success');
+          } else {
+            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+            small.classList.remove('text-success');
+            small.classList.add('text-danger');
+          }
+     };     
+      
       // Formulaire - Ajout du nom
       let divLastName = document.createElement("div");
       divLastName.className = "form_lastname";
@@ -153,13 +181,40 @@ if (listTeddySelected == null){
       let lastName = document.createElement("input");
       divLastName.appendChild(lastName);
       lastName.setAttribute('type', 'text');
-      lastName.setAttribute('class', 'name');
+      lastName.setAttribute('id', 'lastname');
       lastName.name = "Nom"
       lastName.required = true;
 
 
       // vérification des informations enregistrées - nom
+            
+      let plastname = document.createElement('p')
+      plastname.setAttribute('id', 'plastname');
+      divLastName.appendChild(plastname);
+      
+     
+     lastName.addEventListener('change', function(){
+       validLastName(this);
+     });
+     
+      const validLastName = function (inputLastName) {
+        console.log(inputLastName)
+      let lastnameRegExp = new RegExp(
+        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
+          // Test expression régulière
+          let testLastName = lastnameRegExp.test(inputLastName.value);
+          let small = document.getElementById('plastname')
+          if (testLastName) {
+            small.innerHTML = 'Nom de famille valide';
+            small.classList.remove('text-danger');
+            small.classList.add('text-success');
+          } else {
+            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+            small.classList.remove('text-success');
+            small.classList.add('text-danger');
+          }
+     };  
 
       // Formulaire - Ajout de l'adresse 
       let divAddress = document.createElement("div");
@@ -171,13 +226,40 @@ if (listTeddySelected == null){
       let address = document.createElement('textarea');
       divAddress.appendChild(address);
       address.setAttribute('type', 'text');
-      address.setAttribute('class', 'name');
+      address.setAttribute('id', 'address');
       address.name = "Adresse"
       address.required = true;
 
 
       // vérification des informations enregistrées - adresse  
+      
+      let paddress = document.createElement('p')
+      paddress.setAttribute('id', 'paddress');
+      divAddress.appendChild(paddress);
+      
+     
+     address.addEventListener('change', function(){
+       validAdress(this);
+     });
+     
+      const validAdress = function (inputAddress) {
+          console.log(inputAddress)
+        let addressRegExp = new RegExp(
+          '(?<h>^[\d]+[ ])(?<s>.+$)|')
 
+          // Test expression régulière
+          let testAddress = addressRegExp.test(inputAddress.value);
+          let small = document.getElementById('paddress')
+          if (testAddress) {
+            small.innerHTML = 'Adresse valide';
+            small.classList.remove('text-danger');
+            small.classList.add('text-success');
+          } else {
+            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+            small.classList.remove('text-success');
+            small.classList.add('text-danger');
+          }
+     };
 
       // Formulaire - Ajout de la ville 
       let divCity = document.createElement("div");
@@ -189,16 +271,43 @@ if (listTeddySelected == null){
       let city = document.createElement("input");
       divCity.appendChild(city);
       city.setAttribute('type', 'text');
-      city.setAttribute('class', 'name');
+      city.setAttribute('id', 'city');
       city.name = "Ville"
       city.required = true;
       
       // vérification des informations enregistrées - city
+      
+      let pcity = document.createElement('p')
+      pcity.setAttribute('id', 'pcity');
+      divCity.appendChild(pcity);
+      
+     
+     city.addEventListener('change', function(){
+       validCity(this);
+     });
+     
+      const validCity = function (inputCity) {
+        console.log(inputCity)
+      let cityRegExp = new RegExp(
+        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
+        // Test expression régulière
+        let testCity = cityRegExp.test(inputCity.value);
+        let small = document.getElementById('pcity')
+        if (testCity) {
+          small.innerHTML = 'Adresse valide';
+          small.classList.remove('text-danger');
+          small.classList.add('text-success');
+        } else {
+          small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+          small.classList.remove('text-success');
+          small.classList.add('text-danger');
+        }
+     };
 
       // Formulaire - Ajout de l'email 
       let divEmail = document.createElement("div");
-      divEmail.className = "form_city";
+      divEmail.className = "form_email";
       divEmail.textContent = "Votre email : ";
       divEmail.setAttribute("for","email")
       divForm.appendChild(divEmail)
@@ -206,25 +315,104 @@ if (listTeddySelected == null){
       let email = document.createElement("input");
       divEmail.appendChild(email);
       email.setAttribute('type', 'email');
-      email.setAttribute('class', 'name');
+      email.setAttribute('id', 'email');
       email.name = "Email"
       email.required = true;
+
+      let pemail = document.createElement('p')
+      pemail.setAttribute('id', 'pemail');
+      divEmail.appendChild(pemail);
       
       // vérification des informations enregistrées - @
+     email.addEventListener('change', function(){
+       validEmail(this);
+     });
+     
+      const validEmail = function (inputEmail) {
+        console.log(inputEmail)
+      let emailRegExp = new RegExp(
+        '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
 
-
-      // Création couleur en arrière plan si le formulaire n'est pas correctement rempli 
-        function highlight (champ, erreur) {
-          if (erreur)
-          champ.style.backgroundColor= "#fba";
-          else 
-          champ.style.backgroundColor="";
+        // Test expression régulière
+        let testEmail = emailRegExp.test(inputEmail.value);
+        let small = document.getElementById('pemail')
+        if (testEmail) {
+          small.innerHTML = 'Adresse valide';
+          small.classList.remove('text-danger');
+          small.classList.add('text-success');
+        } else {
+          small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse est invalide';
+          small.classList.remove('text-success');
+          small.classList.add('text-danger');
         }
+     };
 
+     
 
       // Création d'un bouton validation du panier 
+      let validateDiv = document.createElement("div")
+      divButton.appendChild(validateDiv)
+      validateDiv.className = "validate_basket";
+      validateDiv.textContent = "Envoyer la commande"
 
-      // Envoie des données panier et formulaire contact au serveur - si formulaire valide
+     
+
+
+      // Valider le formulaire pour l'envoyer à l'API
+      // Selection du bouton envoyer le formulaire 
+      const ButtonSendForm = document.querySelector("#order_form");
+    //   console.log(document.querySelector("#order_form")) 
+
+
+      // Add event listener sur le bouton d'envoie du formulaire
+
+      ButtonSendForm.addEventListener("click", (e)=>{
+        e.preventDefault();
+
+          const formValue = {
+          Prénom: document.querySelector("#firstname").value,
+          Nom: document.querySelector("#lastname").value,
+          Adresse: document.querySelector("#address").value,
+          Ville: document.querySelector("#city").value,
+          Email: document.querySelector("#email").value,
+        }
+
+        console.log("formValue");
+        console.log(formValue);
+       
+       // Mettre formValue dans localStorage
+       localStorage.setItem("formValue", JSON.stringify(formValue)); 
+
+  /*    // Mettre les valeurs du formulaire dans un objet 
+          const Form = {
+            Prénom: localStorage.getItem("Prénom"),
+            Nom: localStorage.getItem("Nom"),
+            Adresse: localStorage.getItem("Adresse"),
+            Ville: localStorage.getItem("Ville"),
+            Email: localStorage.getItem("Email"),
+
+          }
+          console.log("Form");
+           console.log(Form); */
+
+           // Attention le formulaire ne doit pas pouvoir s'envoyer si ls info remplies ne sont pas valides
+
+      // A envoyer dans le serveur 
+        const sendToApi = {
+          ButtonSendForm,
+          formValue
+        }
+        console.log("sendToApi")
+        console.log(sendToApi)
+      })
+
+      
+
+    
+        // Ajouter une alerte avant la validation du panier pour que le formulaire soit rempli
+      
+
+      // Envoie des données panier et formulaire contact au serveur - si formulaire valide ++ du montant global du panier
 
 
     }   

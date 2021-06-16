@@ -126,9 +126,55 @@ main h1 {
     margin: 3px;
 }
 
-.name {
-    width: 85px;
+#order_form h2 {
+    font-size: large;
+    padding: 10px;
 }
+
+#order_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 820px;
+    margin-bottom: 20px;
+}
+
+.form_firsname .text {
+    width: 100px;
+}
+
+.form_firsname, .form_lastname, .form_adresse, .form_city, .form_email  {
+    width: 560px;
+    margin: 10px;
+    padding-left: 10px;
+
+    -webkit-box-sizing: border-box; /* Pour les anciennes versions des navigateurs WebKit */
+       -moz-box-sizing: border-box; /* Pour tous les navigateurs Gecko */
+            box-sizing: border-box;
+}
+
+
+.form_firsname #firstname {
+    width: 400px;
+}
+
+.form_lastname #lastname {
+    width: 425px;
+}
+
+.form_adresse #address {
+    width: 400px;
+}
+
+.form_city #city {
+    width: 435px;
+}
+
+.form_email #email {
+    width: 423px;
+}
+
 .Teddy_colour {
     font-family: 'poppins';
     font-size: medium;
@@ -146,15 +192,39 @@ main h1 {
     font-size: medium;
 }
 
+.basket_button {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .delete_all_basket {
     padding : 0.5rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
     font-size: large;
     border: 1px solid black;
     border-radius: 1rem;
     background-color: rgb(241, 236, 236);
 }
+
+.validate_basket {
+    padding : 0.5rem;
+    font-size: large;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background-color: rgb(241, 236, 236);
+}
+
+.text-danger {
+    color: red;
+}
+
+.text-success {
+    color: green;
+}
+
+
 
 .Total_Basket {
     margin-top: 10px;
@@ -163,10 +233,7 @@ main h1 {
     font-variant: small-caps;
 }
 
-.order_form h2 {
-    font-size: large;
-    padding: 10px;
-}
+
 
 footer {
     display: flex;
