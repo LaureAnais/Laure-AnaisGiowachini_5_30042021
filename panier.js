@@ -360,12 +360,45 @@ if (listTeddySelected == null){
       // Création d'un bouton validation du panier 
       let validateDiv = document.createElement("div")
       divButton.appendChild(validateDiv)
-      validateDiv.className = "validate_basket";
+      validateDiv.id = "validate_basket";
       validateDiv.textContent = "Envoyer la commande"
 
      
 
       //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
+    
+      /*/ TEST METHODE WEBINAIRE 1 
+
+      // Selection du bouton envoyer le formulaire 
+      const ButtonSendForm = document.querySelector("#validate_basket");
+      const formValue = {
+        Prénom: document.querySelector("#firstname").value,
+        Nom: document.querySelector("#lastname").value,
+        Adresse: document.querySelector("#address").value,
+        Ville: document.querySelector("#city").value,
+        Email: document.querySelector("#email").value,
+      }
+
+      ButtonSendForm.addEventListener('click', function(){
+        var valid = true;
+        
+        for(let input of document.querySelectorAll(".form input, .form textarea")){
+          valid &= input.reportValidity();
+            if (!valid){
+              break;
+            }
+        }
+        if(valid){
+         alert("Votre commande a bien été envoyée!");
+         // Mettre formValue dans localStorage
+         localStorage.setItem("formValue", JSON.stringify(formValue));
+        }
+      });
+
+      console.log('ButtonSendForm')
+      console.log(ButtonSendForm)
+
+       */ //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
       
       // Selection du bouton envoyer le formulaire 
       const ButtonSendForm = document.querySelector("#order_form");
@@ -377,11 +410,11 @@ if (listTeddySelected == null){
         e.preventDefault();
 
           const formValue = {
-          Prénom: document.querySelector("#firstname").value,
-          Nom: document.querySelector("#lastname").value,
-          Adresse: document.querySelector("#address").value,
-          Ville: document.querySelector("#city").value,
-          Email: document.querySelector("#email").value,
+          firstName: document.querySelector("#firstname").value,
+          lastName: document.querySelector("#lastname").value,
+          address: document.querySelector("#address").value,
+          city: document.querySelector("#city").value,
+          email: document.querySelector("#email").value,
         }
 
         console.log("formValue");
@@ -390,44 +423,16 @@ if (listTeddySelected == null){
        // Mettre formValue dans localStorage
        localStorage.setItem("formValue", JSON.stringify(formValue)); 
 
-       // Attention le formulaire ne doit pas pouvoir s'envoyer si ls info remplies ne sont pas valides
-       // + on doit récupérer le montant total de la commande => total account 
-       // UTILISER LA METHODE POST 
-       // AVOIR UNE GESTION DES ERREURS => OOPS UNE ERREUR EST ARRIVEE 
+       fetch( 'http://localhost:3000/api/teddies/order', {
+         method: 'post',
+         body: formValue,        
+       }) .then(function(response){
+            return response.text()
 
-       // A envoyer dans le serveur 
-        let url = "http://localhost:3000/api/teddies/order";
+            }) .then (function (text){
+              console.log(text)
+            })
+       })
 
-        const sendToApi = new XMLHttpRequest();
-        sendToApi.open('POST', 'somewhere', true);
-        sendToApi.setRequestHeader('Content-type', 'http://localhost:3000/api/teddies/order');
-        sendToApi.onload = function () {
-          // do something to response
-          console.log(this.responseText);
+
       };
-      sendToApi.send('');
-       
-
-        //  ButtonSendForm,
-        //   formValue
-        }
-        
-      )
-
-      // Ajouter une alerte avant la validation du panier pour que le formulaire soit rempli
-      
-
-      // Envoie des données panier et formulaire contact au serveur - si formulaire valide ++ du montant global du panier
-    
-      
-
-
-
-
-    }   
-
-      
- 
-    
-       
-   

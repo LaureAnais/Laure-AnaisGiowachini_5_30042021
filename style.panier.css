@@ -208,7 +208,7 @@ main h1 {
     background-color: rgb(241, 236, 236);
 }
 
-.validate_basket {
+#validate_basket {
     padding : 0.5rem;
     font-size: large;
     border: 1px solid black;
