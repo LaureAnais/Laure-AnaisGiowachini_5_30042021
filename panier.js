@@ -364,41 +364,7 @@ if (listTeddySelected == null){
       validateDiv.textContent = "Envoyer la commande"
 
      
-
-      //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
-    
-      /*/ TEST METHODE WEBINAIRE 1 
-
-      // Selection du bouton envoyer le formulaire 
-      const ButtonSendForm = document.querySelector("#validate_basket");
-      const formValue = {
-        Prénom: document.querySelector("#firstname").value,
-        Nom: document.querySelector("#lastname").value,
-        Adresse: document.querySelector("#address").value,
-        Ville: document.querySelector("#city").value,
-        Email: document.querySelector("#email").value,
-      }
-
-      ButtonSendForm.addEventListener('click', function(){
-        var valid = true;
-        
-        for(let input of document.querySelectorAll(".form input, .form textarea")){
-          valid &= input.reportValidity();
-            if (!valid){
-              break;
-            }
-        }
-        if(valid){
-         alert("Votre commande a bien été envoyée!");
-         // Mettre formValue dans localStorage
-         localStorage.setItem("formValue", JSON.stringify(formValue));
-        }
-      });
-
-      console.log('ButtonSendForm')
-      console.log(ButtonSendForm)
-
-       */ //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
+ //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
       
       // Selection du bouton envoyer le formulaire 
       const ButtonSendForm = document.querySelector("#order_form");
@@ -415,24 +381,36 @@ if (listTeddySelected == null){
           address: document.querySelector("#address").value,
           city: document.querySelector("#city").value,
           email: document.querySelector("#email").value,
+
+        }
+        console.log(formValue);
+
+        const send = {
+          formValue,
+          totalAccount
         }
 
-        console.log("formValue");
-        console.log(formValue);
-       
+        console.log(send)
+             
        // Mettre formValue dans localStorage
-       localStorage.setItem("formValue", JSON.stringify(formValue)); 
+       localStorage.setItem("send", JSON.stringify(send)); 
 
        fetch( 'http://localhost:3000/api/teddies/order', {
          method: 'post',
-         body: formValue,        
+         body: send,        
        }) .then(function(response){
-            return response.text()
+            return response.text(
+              localStorage.setItem("orderValidated", send.orderId),
+              window.location = "confirmation_commande.html",
+              localStorage.removeItem("newItem"),
+            )
 
             }) .then (function (text){
               console.log(text)
             })
        })
 
+       // Avoir un retour du serveur ??
+       // Faire un catch error 
 
       };
