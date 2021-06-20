@@ -194,7 +194,7 @@ main h1 {
 
 .basket_button {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 500px;
     margin-top: 20px;
     margin-bottom: 20px;

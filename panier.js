@@ -25,7 +25,7 @@ if (listTeddySelected == null){
     let basket = JSON.parse(listTeddySelected);
     console.log(basket)
 
-    let totalAccount = 0
+    let products = 0
 
   //***************************** LE PANIER CONTIENT DES TEDDY -  CREATION DES ELEMENTS DU PANIER ****************************************
 
@@ -63,7 +63,7 @@ if (listTeddySelected == null){
       divPrice = document.createElement("div")
       divPrice.className = "price";
       divPrice.textContent = basket[i].price + " €";  
-      totalAccount = totalAccount+Number(basket[i].price)
+      products = products+Number(basket[i].price)
       divShow.appendChild(divPrice)
 
       // Création d'une div pour la quantité du teddy selectionné 
@@ -97,9 +97,9 @@ if (listTeddySelected == null){
      
      divTotalAccount = document.createElement('div')
      divTotalAccount.className = "Total_Basket";
-     divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
+     divTotalAccount.textContent = "Montant total de votre commande :  " + products + " €";
      TotalAccount[0].appendChild(divTotalAccount)
-     console.log(totalAccount)
+     console.log(products)
 
      //************************************* CREATION DES BOUTONS DU PANIER  ****************************************
 
@@ -355,11 +355,11 @@ if (listTeddySelected == null){
             }
      };
 
-          //************************************* CREATION BOUTON VALIDATION PANIER ************************************** 
+ //************************************* CREATION BOUTON VALIDATION PANIER ************************************** 
 
       // Création d'un bouton validation du panier 
       let validateDiv = document.createElement("div")
-      divButton.appendChild(validateDiv)
+      divForm.appendChild(validateDiv)
       validateDiv.id = "validate_basket";
       validateDiv.textContent = "Envoyer la commande"
 
@@ -367,50 +367,67 @@ if (listTeddySelected == null){
  //************************************* ENVOI DES INFORMATIONS A L'API  ****************************************
       
       // Selection du bouton envoyer le formulaire 
-      const ButtonSendForm = document.querySelector("#order_form");
+      const ButtonSendForm = document.querySelector("#validate_basket");
     
 
       // Add event listener sur le bouton d'envoie du formulaire
 
-      ButtonSendForm.addEventListener("click", (e)=>{
+      // au click ou submit?? 
+      ButtonSendForm.addEventListener("click", (e)=> {
         e.preventDefault();
-
-          const formValue = {
-          firstName: document.querySelector("#firstname").value,
-          lastName: document.querySelector("#lastname").value,
-          address: document.querySelector("#address").value,
-          city: document.querySelector("#city").value,
-          email: document.querySelector("#email").value,
-
-        }
-        console.log(formValue);
-
+     
+        const contact = {
+            firstName: document.querySelector("#firstname").value,
+            lastName: document.querySelector("#lastname").value,
+            address: document.querySelector("#address").value,
+            city: document.querySelector("#city").value,
+            email: document.querySelector("#email").value
+        };
+     
+        console.log('contact');
+        console.log(contact);
+     
         const send = {
-          formValue,
-          totalAccount
+          contact,
+          products
+        };
+     
+        console.log(send);
+         
+        // Mettre contact  dans localStorage
+        localStorage.setItem("send", JSON.stringify({contact, products})); 
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-type' : 'application/json' 
+            },
+            body: JSON.stringify(send)
         }
+     
+        fetch('http://localhost:3000/api/teddies/order', options)
 
-        console.log(send)
-             
-       // Mettre formValue dans localStorage
-       localStorage.setItem("send", JSON.stringify(send)); 
-
-       fetch( 'http://localhost:3000/api/teddies/order', {
-         method: 'post',
-         body: send,        
-       }) .then(function(response){
-            return response.text(
-              localStorage.setItem("orderValidated", send.orderId),
-              window.location = "confirmation_commande.html",
-              localStorage.removeItem("newItem"),
-            )
-
-            }) .then (function (text){
-              console.log(text)
+        // 1er then => gère s'il y a une erreur // si il y a une erreur, cette erreur sera convertie en réponse json
+            .then(function(response) {
+              console.log('coucou')
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.JSON();
             })
-       })
+            .then(function(send) {
+                localStorage.setItem("orderValidated", send.orderId);
+                window.location = "confirmation_commande.html";
+                localStorage.removeItem("newItem");
 
-       // Avoir un retour du serveur ??
-       // Faire un catch error 
+                
+            console.log('send')
+            console.log(send)
+            })
+            .catch(function(error) {
+                console.log(error);
+                console.log('error')
+            })
 
-      };
+    });
+    };
