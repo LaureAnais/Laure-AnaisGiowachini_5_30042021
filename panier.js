@@ -25,12 +25,13 @@ if (listTeddySelected == null){
     let basket = JSON.parse(listTeddySelected);
     console.log(basket)
 
-    let products = 0
+    let totalAccount = 0
 
   //***************************** LE PANIER CONTIENT DES TEDDY -  CREATION DES ELEMENTS DU PANIER ****************************************
 
     for(let i = 0; i < basket.length; i++){
       console.log(basket[i].productName)
+      products = basket[i].idproduct;
       // mettre une class à ma div id basket pour rattacher domDiv
 
       const main = document.getElementById("basket");
@@ -63,7 +64,7 @@ if (listTeddySelected == null){
       divPrice = document.createElement("div")
       divPrice.className = "price";
       divPrice.textContent = basket[i].price + " €";  
-      products = products+Number(basket[i].price)
+      totalAccount = totalAccount+Number(basket[i].price)
       divShow.appendChild(divPrice)
 
       // Création d'une div pour la quantité du teddy selectionné 
@@ -97,9 +98,9 @@ if (listTeddySelected == null){
      
      divTotalAccount = document.createElement('div')
      divTotalAccount.className = "Total_Basket";
-     divTotalAccount.textContent = "Montant total de votre commande :  " + products + " €";
+     divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
      TotalAccount[0].appendChild(divTotalAccount)
-     console.log(products)
+     console.log(totalAccount)
 
      //************************************* CREATION DES BOUTONS DU PANIER  ****************************************
 
@@ -383,6 +384,8 @@ if (listTeddySelected == null){
             city: document.querySelector("#city").value,
             email: document.querySelector("#email").value
         };
+
+        
      
         console.log('contact');
         console.log(contact);
@@ -390,19 +393,24 @@ if (listTeddySelected == null){
         const send = {
           contact,
           products
-        };
-     
+        }; 
+        
+        console.log('send');
         console.log(send);
+        console.log(typeof products)
          
         // Mettre contact  dans localStorage
-        localStorage.setItem("send", JSON.stringify({contact, products})); 
+       // localStorage.setItem("send", JSON.stringify({contact, products})); 
 
         const options = {
             method: 'POST',
             headers: {
                 'Content-type' : 'application/json' 
             },
-            body: JSON.stringify(send)
+            body: JSON.stringify({
+              contact, 
+              products
+            })
         }
      
         fetch('http://localhost:3000/api/teddies/order', options)
@@ -413,12 +421,12 @@ if (listTeddySelected == null){
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-                return response.JSON();
+                return response.json();
             })
-            .then(function(send) {
-                localStorage.setItem("orderValidated", send.orderId);
+            .then(function(value) {
+                localStorage.setItem("OrderID ", value.orderId);
                 window.location = "confirmation_commande.html";
-                localStorage.removeItem("newItem");
+                console.log("Order ID : ", JSON.stringify(value.orderId));
 
                 
             console.log('send')
