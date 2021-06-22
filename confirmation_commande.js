@@ -38,4 +38,5 @@ divMain.appendChild(pGoodBye);
 pGoodBye.className = "GoodBye";
 pGoodBye.textContent = "En espérant vous revoir bientôt chez Orinoco ! <br /> Toute l'équipe d'orinoco vous souhaite une belle journée."
 
-// Effacer les données ?? après la commande??
+// Effacer les données ?? après la commande???
+
