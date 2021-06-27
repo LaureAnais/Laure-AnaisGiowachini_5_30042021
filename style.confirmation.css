@@ -80,12 +80,16 @@ footer {
     width: auto;
 }
 
-.nav_bar a 
+.nav_link {
+    display: flex;
+}
+
+.nav 
 {
     padding: 35px;
     font-size: large;
 }
-.nav_bar i 
+.nav i 
 {
     padding-left: 20px;
 }
@@ -170,9 +174,14 @@ footer li
         padding-bottom: 10px;
     }
 
+    .nav {
+    padding: 15px;
+    }
+
     .logo {
         height: 80px;
     }
+    
 
     main h1 {
         width: 320px;

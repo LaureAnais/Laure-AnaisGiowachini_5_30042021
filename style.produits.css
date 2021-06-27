@@ -80,12 +80,16 @@ footer {
     width: auto;
 }
 
-.nav_bar a 
+.nav_link {
+    display: flex;
+}
+
+.nav 
 {
     padding: 35px;
     font-size: large;
 }
-.nav_bar i 
+.nav i 
 {
     padding-left: 20px;
 }
@@ -158,11 +162,13 @@ main h1 {
 .Picture {
     align-items: center;
 }
-.Teddy_image img {
+
+.Teddy_Image img{
     width: 250px;
     height: 200px;
     object-fit: cover;
     padding-right: 20px;
+    padding-top: 10px;
     
 }
 
@@ -234,6 +240,10 @@ footer li
         flex-direction: column;
         height: auto;
         padding-bottom: 10px;
+    }
+
+    .nav {
+    padding: 15px;
     }
 
     .logo {
