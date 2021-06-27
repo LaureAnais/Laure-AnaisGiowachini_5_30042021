@@ -1,4 +1,3 @@
-
 // Récupérer Id de l'ourson selectionné 
 let params = (new URL(document.location)).searchParams;
 let id = params.get('id'); 
@@ -9,17 +8,16 @@ console.log(url)
 
 fetch(url)
   .then(response => response.json())
-  .then(data => 
-    {
+  .then(data => {
         const showTeddy = document.getElementById("Teddy_info")
         
         // Création div de l'ourson 
-        const DivGlobal = document.createElement("div");
+        const DivGlobal = document.createElement("section");
         DivGlobal.className ="Show_Teddy"
         showTeddy.appendChild(DivGlobal)
         
         // Création de la div pour afficher l'image de l'ourson 
-        const domImage = document.createElement("div");
+        const domImage = document.createElement("figure");
         domImage.className="Teddy_Image"
         DivGlobal.appendChild(domImage)
 
@@ -30,7 +28,7 @@ fetch(url)
         domImage.appendChild(domImg)
         
         // Création de la div avec l'ensemble des informations sur l'ourson 
-        const DataGlobal = document.createElement("div");
+        const DataGlobal = document.createElement("section");
         DataGlobal.className="Teddy_info"
         DivGlobal.appendChild(DataGlobal)
 
@@ -81,7 +79,7 @@ fetch(url)
         }
 
        // Création d'une div pour la description de l'ourson (texte)   
-       const domInfo = document.createElement("div")
+       const domInfo = document.createElement("span")
        domInfo.className="Teddy_Description"
        domInfo.textContent=data.description
        DataGlobal.appendChild(domInfo)
@@ -96,12 +94,8 @@ fetch(url)
        addTeddy.name = "add";
        addTeddy.id = "submit";
       
-       
-        
-       // Lier le bouton au panier 
-       // addEvenListener => créer un évent sur mon bouton 
        addTeddy.addEventListener("click", function(event){
-         // si l'event n'est pas traité, l'event continue à se propager 
+       // si l'event n'est pas traité, l'event continue à se propager 
           event.preventDefault();
 
           // Mettre le choix du formulaire dans une variable (id=submit)
@@ -113,7 +107,7 @@ fetch(url)
             quantity: 1,
             price: data.price / 100
           }
-          console.log(teddySelected)
+
           let basket
           let listTeddySelected = localStorage.getItem("listTeddySelected");
           if (listTeddySelected == null){
@@ -125,11 +119,9 @@ fetch(url)
             let basket = JSON.parse(listTeddySelected);
             basket.push(teddySelected);
             localStorage.setItem("listTeddySelected",JSON.stringify(basket))
-          }     
+            }     
          
         })
-
-       // Stocker les données des ou du teddy choisi => dans local storage
       
     }); 
     

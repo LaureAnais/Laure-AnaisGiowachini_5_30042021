@@ -102,6 +102,16 @@ main h1 {
     padding-top : 20px;
 }
 
+main h2 {
+    font-size: medium;
+    
+}
+
+main h3 {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
 .image_teddy {
     width: 100px;
     height: auto;
@@ -260,3 +270,162 @@ footer li
 
 }
 
+/* MEDIA QUERIES ECRAN PLUS LARGE  */
+@media screen and (max-width: 1065px) {    
+    #bloc_page {
+        width: 95%;
+        height: auto;
+        margin: auto;
+    }   
+}
+/* MEDIA QUERIES IPAD */
+@media screen and (max-width: 1064px) {
+    
+    #bloc-page {
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    .basket_info {
+        width: 720px;
+    }
+
+    #basket {
+        height: auto;
+    }
+
+    .basket_info {
+        margin-bottom: 0px;
+    }
+
+    #order_form {
+        width: 650px;
+    }
+
+    .form_firsname, .form_lastname, .form_adresse, .form_city, .form_email  {
+        margin: 10px;
+    
+
+        -webkit-box-sizing: border-box; /* Pour les anciennes versions des navigateurs WebKit */
+        -moz-box-sizing: border-box; /* Pour tous les navigateurs Gecko */
+                box-sizing: border-box;
+    }
+
+
+    .form_firsname #firstname {
+        width: 400px;  
+    }
+
+    .form_lastname #lastname {
+        width: 425px;
+    }
+
+    .form_adresse #address {
+        width: 400px;
+    }
+
+    .form_city #city {
+        width: 435px;
+    }
+
+    .form_email #email {
+        width: 420px;
+        padding-left: 5px;
+    }
+
+    .Total_Basket {
+        margin-bottom: 25px;
+    }
+
+    #validate_basket  {
+        margin-top: 15px;
+    }
+
+}
+
+/* MEDIA QUERIES IPHONE */
+
+
+@media screen and (max-width: 650px) {
+    .nav_bar {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 10px;
+    }
+
+    .logo {
+        height: 80px;
+    }
+    
+    #bloc-page {
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    
+    .basket_info {
+        flex-direction: column;
+        width: 350px;
+    }
+    
+    #basket {
+        height: auto;
+    }
+    
+    .basket_info {
+        margin-bottom: 0px;
+    }
+    
+    #order_form {
+        width: 350px;
+    }
+    
+    .form_firsname, .form_lastname, .form_adresse, .form_city, .form_email  {
+        width: 350px;
+        margin: 10px;
+       
+    
+        -webkit-box-sizing: border-box; /* Pour les anciennes versions des navigateurs WebKit */
+           -moz-box-sizing: border-box; /* Pour tous les navigateurs Gecko */
+                box-sizing: border-box;
+    }
+    
+    
+    .form_firsname #firstname {
+        width: 200px;  
+    }
+    
+    .form_lastname #lastname {
+        width: 225px;
+    }
+    
+    .form_adresse #address {
+        width: 200px;
+    }
+    
+    .form_city #city {
+        width: 235px;
+    }
+    
+    .form_email #email {
+        width: 220px;
+        padding-left: 5px;
+    }
+    
+    .Total_Basket {
+        margin-bottom: 25px;
+    }
+    
+    #validate_basket  {
+        margin-top: 15px;
+    }
+
+    footer ul {
+        height: 100px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}

@@ -1,4 +1,4 @@
-/*
+
 
   function addBasket("Teddy_info"){
     let listTeddySelected = getBasket();
@@ -24,4 +24,4 @@
     localStorage.setItem("listTeddySelected",JSON.stringify(listTeddySelected))
   }    
 
-  */
+  

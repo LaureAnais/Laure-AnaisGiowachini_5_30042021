@@ -11,28 +11,23 @@ fetch('http://localhost:3000/api/teddies')
         let domPrice
         let domDiv2
         let domImage 
-        // let domChoice
-        console.log(data)
+        
         for(let i=0; i < data.length; i++)
         {  
           doma = document.createElement("a");
           doma.setAttribute("href", "produits.html?id=" + data[i]._id);
                     
-          domDiv = document.createElement("div");
+          domDiv = document.createElement("section");
           domDiv.className = "class_teddy";
           doma.appendChild(domDiv)
                     
-          domDiv2 = document.createElement("div");
+          domDiv2 = document.createElement("figure");
           domDiv2.className = "class_photo";
           domDiv.appendChild(domDiv2)
 
           domDiv3 = document.createElement("div");
           domDiv3.className = "class_info";
           domDiv.appendChild(domDiv3)
-
-          domDiv4 = document.createElement("div");
-          domDiv4.className = "class_choice";
-          domDiv.appendChild(domDiv4)
          
           console.log(data[i].name)
           domNom = document.createElement("h3")
@@ -53,9 +48,8 @@ fetch('http://localhost:3000/api/teddies')
           
           myGallery.appendChild(doma)
         }    
-
       
-   })
+    })
    .catch(error => {
      document.getElementById('content').textContent='Erreur avec le serveur'
    });

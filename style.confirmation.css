@@ -91,89 +91,28 @@ footer {
 }
 
 main {
-    height: auto;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#products
-{
+main h1 {
+    font-size: x-large;
+}
+
+.confirmation_order {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    line-height: 25px;   
-}
-
-#products h2 {
-    font-size: 0.7cm;
-    padding-bottom: 15px;
-    padding-top: 15px;
-}
-
-#products p {
-    font-size: 0.5cm;
-    padding-bottom: 35px;
-}
-
-#content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: space-around;
-    font-size: 0.5cm;
-    padding: 2rem;
-    margin-bottom: 1rem;
-    width: auto;
+    height: 200px;
+    width: 450px;
+    padding-left: 25px;
 }
 
-.class_teddy {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 250px;
-    border-bottom: black 1px solid;
-    margin: 1rem;
-}
-
-
-.class_photo {
-    align-items: center;
-}
-.class_photo img {
-    width: 250px;
-    height: 150px;
-    object-fit: cover;
-    
-}
-
-.class_info {
-    padding: 0.5cm;
-    display: flex;
-    justify-content: space-between;
-
-}
-.class_info .name_teddy {
+.confirmation_order h2, h3, p {
     font-size: medium;
-    padding-top: 10px;
-}
-
-.class_info .price_teddy {
-    font-size: small;
-    padding-top: 10px;
-}
-
-.class_choice {
-    display: flex;
-    align-items: flex-end;
-}
-.btn_like {
-    background-color: white;
-    border: white;
-    font-family: 'poppins';
-    font-size: medium;
-    padding-left: 60px;
 }
 
 footer {
@@ -208,20 +147,15 @@ footer li
         height: auto;
         margin: auto;
     }   
-
-    footer
-    {
-        width: 100%;
-    }
 }
 /* MEDIA QUERIES IPAD */
 @media screen and (max-width: 1064px) {
     
-    #bloc-page {
-        width: 100%;
-        height: auto;
-        margin: auto;
-    }
+#bloc-page {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
 
 }
 
@@ -239,28 +173,14 @@ footer li
     .logo {
         height: 80px;
     }
-    
-    #products h2 {
-        align-items: center;
-        font-size: medium;
-    }
 
-    #products p {
-        padding-bottom: 5px;
+    main h1 {
+        width: 320px;
+        padding-left: 20px;
     }
     
-    #content {
-        flex-direction: column;
-    }
-    
-    .class_teddy {
-        width: auto;
-    }
-
-    .class_photo img {
-        width: 250px;
-        height: 150px;
-        object-fit: cover;
+    .confirmation_order {
+        width: 320px;
     }
 
     footer ul {

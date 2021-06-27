@@ -205,3 +205,65 @@ footer li
     font-size: 1.2em;
 
 }
+
+/* MEDIA QUERIES ECRAN PLUS LARGE  */
+@media screen and (max-width: 1065px) {    
+    #bloc_page {
+        width: 95%;
+        height: auto;
+        margin: auto;
+    }   
+
+}
+/* MEDIA QUERIES IPAD */
+@media screen and (max-width: 1064px) {
+    
+    #bloc-page {
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+}
+
+/* MEDIA QUERIES IPHONE */
+
+
+@media screen and (max-width: 650px) {
+    .nav_bar {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 10px;
+    }
+
+    .logo {
+        height: 80px;
+    }
+    
+    main h1 {
+        font-size: x-large;
+        align-items: center;
+    }
+
+    .Show_Teddy {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .btn_like {
+        align-items: center;
+    }
+
+    footer ul {
+        height: 100px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}

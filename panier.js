@@ -8,7 +8,7 @@ if (listTeddySelected == null){
   const main = document.getElementById("basket");
 
   // Création d'une div pour montrer les éléments du panier 
-  let mainDiv = document.createElement("div")
+  let mainDiv = document.createElement("section")
   mainDiv.className = "show_basket";
   main.appendChild(mainDiv)
 
@@ -23,27 +23,25 @@ if (listTeddySelected == null){
     // s'il y a quelque chose dans le panier : récupérer les informations
     console.log("Il y a un produit dans le panier")
     let basket = JSON.parse(listTeddySelected);
-    console.log(basket)
 
     let totalAccount = 0
+    let products = []
 
   //***************************** LE PANIER CONTIENT DES TEDDY -  CREATION DES ELEMENTS DU PANIER ****************************************
 
     for(let i = 0; i < basket.length; i++){
       console.log(basket[i].productName)
-      products = basket[i].idproduct;
-      // mettre une class à ma div id basket pour rattacher domDiv
-
+      products.push(basket[i].idproduct);
+  
       const main = document.getElementById("basket");
-      // attribuer une valeur à main ???? QUOI ???
-
+   
       // Création d'une div pour montrer les éléments du panier 
-      let mainDiv = document.createElement("div")
+      let mainDiv = document.createElement("section")
       mainDiv.className = "show_basket";
       main.appendChild(mainDiv)
 
       // Création d'une div pour donner les infos sur le teddy selectionné 
-      divShow = document.createElement('div');
+      divShow = document.createElement('section');
       divShow.className = "basket_info";
       mainDiv.appendChild(divShow)
 
@@ -55,20 +53,20 @@ if (listTeddySelected == null){
       divShow.appendChild(divImg)
     
       // Création d'une div pour le nom du teddy selectionné
-      divName = document.createElement("div")
+      divName = document.createElement("h2")
       divName.className = "name";
       divName.textContent = basket[i].productName;  
       divShow.appendChild(divName)
 
       // Création d'une div pour le prix du teddy selectionné
-      divPrice = document.createElement("div")
+      divPrice = document.createElement("span")
       divPrice.className = "price";
       divPrice.textContent = basket[i].price + " €";  
       totalAccount = totalAccount+Number(basket[i].price)
       divShow.appendChild(divPrice)
 
       // Création d'une div pour la quantité du teddy selectionné 
-      divQuantity = document.createElement("div")
+      divQuantity = document.createElement("h3")
       divQuantity.className = "quantity";
       divQuantity.textContent = "Quantité selectionnée : " + basket[i].quantity + " "; 
       divShow.appendChild(divQuantity)
@@ -100,8 +98,7 @@ if (listTeddySelected == null){
      divTotalAccount.className = "Total_Basket";
      divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
      TotalAccount[0].appendChild(divTotalAccount)
-     console.log(totalAccount)
-
+    
      //************************************* CREATION DES BOUTONS DU PANIER  ****************************************
 
       // Création d'une div pour englober les boutons du panier 
@@ -116,6 +113,7 @@ if (listTeddySelected == null){
       divButton.appendChild(deleteDiv)
       deleteDiv.className = "delete_all_basket";
       deleteDiv.textContent = "Supprimer le panier"
+      
       deleteDiv.addEventListener("click", function(event){
         console.log('vider le panier')
         localStorage.removeItem('listTeddySelected')
@@ -126,11 +124,11 @@ if (listTeddySelected == null){
       //************************************* CREATION DU FORMULAIRE ****************************************
     
        // Création d'un formulaire 
-       const form = document.getElementsByTagName("main");
+      const form = document.getElementsByTagName("main");
 
-       let divForm = document.createElement("form");
-       divForm.id = "order_form";
-       form[0].appendChild(divForm)
+      let divForm = document.createElement("form");
+      divForm.id = "order_form";
+      form[0].appendChild(divForm)
 
       let formTitle = document.createElement("h2");
       formTitle.textContent = "Afin de valider votre commande, merci de remplir ce formulaire : "
@@ -159,11 +157,12 @@ if (listTeddySelected == null){
      
       firstName.addEventListener('change', function(){
        validFirstName(this);
-     });
+      });
      
       const validFirstName = function (inputFirstName) {
         console.log(inputFirstName)
-      let firstnameRegExp = new RegExp(
+        
+        let firstnameRegExp = new RegExp(
         '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
           // Test expression régulière
@@ -178,7 +177,7 @@ if (listTeddySelected == null){
             small.classList.remove('text-success');
             small.classList.add('text-danger');
           }
-     };     
+      };     
       
       // Formulaire - Ajout du nom
       let divLastName = document.createElement("div");
@@ -202,14 +201,14 @@ if (listTeddySelected == null){
       divLastName.appendChild(plastname);
       
      
-     lastName.addEventListener('change', function(){
-       validLastName(this);
-     });
+      lastName.addEventListener('change', function(){
+        validLastName(this);
+      });
      
       const validLastName = function (inputLastName) {
-        console.log(inputLastName)
-      let lastnameRegExp = new RegExp(
-        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+          console.log(inputLastName)
+          let lastnameRegExp = new RegExp(
+          '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
           // Test expression régulière
           let testLastName = lastnameRegExp.test(inputLastName.value);
@@ -222,8 +221,8 @@ if (listTeddySelected == null){
             small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
-          }
-     };  
+            }
+      };  
 
       // Formulaire - Ajout de l'adresse 
       let divAddress = document.createElement("div");
@@ -247,13 +246,14 @@ if (listTeddySelected == null){
       divAddress.appendChild(paddress);
       
      
-     address.addEventListener('change', function(){
+      address.addEventListener('change', function(){
        validAdress(this);
-     });
+      });
      
-      const validAdress = function (inputAddress) {
+      const validAdress = function (inputAddress) { 
           console.log(inputAddress)
-        let addressRegExp = new RegExp(
+          
+          let addressRegExp = new RegExp(
           '(?<h>^[\d]+[ ])(?<s>.+$)|')
 
           // Test expression régulière
@@ -268,7 +268,7 @@ if (listTeddySelected == null){
             small.classList.remove('text-success');
             small.classList.add('text-danger');
           }
-     };
+      };
 
       // Formulaire - Ajout de la ville 
       let divCity = document.createElement("div");
@@ -285,7 +285,6 @@ if (listTeddySelected == null){
       city.required = true;
       
       // vérification des informations enregistrées - city
-      
       let pcity = document.createElement('p')
       pcity.setAttribute('id', 'pcity');
       divCity.appendChild(pcity);
@@ -296,7 +295,8 @@ if (listTeddySelected == null){
      });
      
       const validCity = function (inputCity) {
-        console.log(inputCity)
+          console.log(inputCity)
+          
           let cityRegExp = new RegExp(
             '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
@@ -314,34 +314,35 @@ if (listTeddySelected == null){
             }
      };
 
-      // Formulaire - Ajout de l'email 
-      let divEmail = document.createElement("div");
-      divEmail.className = "form_email";
-      divEmail.textContent = "Votre email : ";
-      divEmail.setAttribute("for","email")
-      divForm.appendChild(divEmail)
+        // Formulaire - Ajout de l'email 
+        let divEmail = document.createElement("div");
+        divEmail.className = "form_email";
+        divEmail.textContent = "Votre email : ";
+        divEmail.setAttribute("for","email")
+        divForm.appendChild(divEmail)
 
-      let email = document.createElement("input");
-      divEmail.appendChild(email);
-      email.setAttribute('type', 'email');
-      email.setAttribute('id', 'email');
-      email.name = "Email"
-      email.required = true;
+        let email = document.createElement("input");
+        divEmail.appendChild(email);
+        email.setAttribute('type', 'email');
+        email.setAttribute('id', 'email');
+        email.name = "Email"
+        email.required = true;
 
-      let pemail = document.createElement('p')
-      pemail.setAttribute('id', 'pemail');
-      divEmail.appendChild(pemail);
-      
-      // vérification des informations enregistrées - @
-     email.addEventListener('change', function(){
-       validEmail(this);
-     });
+        let pemail = document.createElement('p')
+        pemail.setAttribute('id', 'pemail');
+        divEmail.appendChild(pemail);
+        
+        // vérification des informations enregistrées - @
+        email.addEventListener('change', function(){
+          validEmail(this);
+        });
      
       const validEmail = function (inputEmail) {
-        console.log(inputEmail)
+          console.log(inputEmail)
+          
           let emailRegExp = new RegExp(
-            '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g')
-
+            '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
+          )
             // Test expression régulière
             let testEmail = emailRegExp.test(inputEmail.value);
             let small = document.getElementById('pemail')
@@ -353,8 +354,8 @@ if (listTeddySelected == null){
               small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse est invalide';
               small.classList.remove('text-success');
               small.classList.add('text-danger');
-            }
-     };
+              }
+      };
 
  //************************************* CREATION BOUTON VALIDATION PANIER ************************************** 
 
@@ -371,47 +372,28 @@ if (listTeddySelected == null){
       const ButtonSendForm = document.querySelector("#validate_basket");
     
 
-      // Add event listener sur le bouton d'envoie du formulaire
-
-      // au click ou submit?? 
+      // Add event listener sur le bouton d'envoie du formulaire 
       ButtonSendForm.addEventListener("click", (e)=> {
         e.preventDefault();
      
-        const contact = {
-            firstName: document.querySelector("#firstname").value,
-            lastName: document.querySelector("#lastname").value,
-            address: document.querySelector("#address").value,
-            city: document.querySelector("#city").value,
-            email: document.querySelector("#email").value
-        };
-
-        
-     
-        console.log('contact');
-        console.log(contact);
-     
-        const send = {
-          contact,
-          products
-        }; 
-        
-        console.log('send');
-        console.log(send);
-        console.log(typeof products)
-         
-        // Mettre contact  dans localStorage
-       // localStorage.setItem("send", JSON.stringify({contact, products})); 
-
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-type' : 'application/json' 
-            },
-            body: JSON.stringify({
-              contact, 
-              products
-            })
-        }
+          const contact = {
+              firstName: document.querySelector("#firstname").value,
+              lastName: document.querySelector("#lastname").value,
+              address: document.querySelector("#address").value,
+              city: document.querySelector("#city").value,
+              email: document.querySelector("#email").value
+          };     
+      
+          const options = {
+              method: 'POST',
+              headers: {
+                  'Content-Type' : 'application/json' 
+              },
+              body: JSON.stringify({
+                contact, 
+                products
+              })
+          }
      
         fetch('http://localhost:3000/api/teddies/order', options)
 
@@ -424,18 +406,13 @@ if (listTeddySelected == null){
                 return response.json();
             })
             .then(function(value) {
-                localStorage.setItem("OrderID ", value.orderId);
+                localStorage.setItem("OrderID", value.orderId);
                 window.location = "confirmation_commande.html";
                 console.log("Order ID : ", JSON.stringify(value.orderId));
-
-                
-            console.log('send')
-            console.log(send)
             })
             .catch(function(error) {
-                console.log(error);
-                console.log('error')
+                console.log(error)
             })
 
-    });
+      });
     };
