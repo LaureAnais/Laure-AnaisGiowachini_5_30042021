@@ -14,14 +14,11 @@ if (listTeddySelected == null){
 
   let divText = document.createElement("div")
   divText.className = "Basket_empty"
-  divText.textContent = "Votre panier est vide!";
+  divText.textContent = "Votre panier est vide!"; 
   mainDiv.appendChild(divText)
- 
-  console.log("Votre panier est vide!")
 
 } else {
     // s'il y a quelque chose dans le panier : récupérer les informations
-    console.log("Il y a un produit dans le panier")
     let basket = JSON.parse(listTeddySelected);
 
     let totalAccount = 0
@@ -83,7 +80,7 @@ if (listTeddySelected == null){
         console.log(i);
         basket.splice(i,1)
         localStorage.setItem("listTeddySelected",JSON.stringify(basket))
-        // après la suppression -> rechercher la page
+        // après la suppression -> recharger la page
         document.location.reload()        
       })  
     
@@ -399,7 +396,6 @@ if (listTeddySelected == null){
 
         // 1er then => gère s'il y a une erreur // si il y a une erreur, cette erreur sera convertie en réponse json
             .then(function(response) {
-              console.log('coucou')
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
