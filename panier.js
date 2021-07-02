@@ -5,7 +5,7 @@
 let listTeddySelected = localStorage.getItem("listTeddySelected");
 if (listTeddySelected == null){
   // Récupérer l'id de mon document html
-  const main = document.getElementById("basket");
+  let main = document.getElementById("basket");
 
   // Création d'une div pour montrer les éléments du panier 
   let mainDiv = document.createElement("section")
@@ -169,10 +169,12 @@ if (listTeddySelected == null){
             small.innerHTML = 'Prénom valide';
             small.classList.remove('text-danger');
             small.classList.add('text-success');
+            return true
           } else {
             small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
+            return false
           }
       };     
       
@@ -214,10 +216,12 @@ if (listTeddySelected == null){
             small.innerHTML = 'Nom de famille valide';
             small.classList.remove('text-danger');
             small.classList.add('text-success');
+            return true
           } else {
             small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
+            return false
             }
       };  
 
@@ -260,10 +264,12 @@ if (listTeddySelected == null){
             small.innerHTML = 'Adresse valide';
             small.classList.remove('text-danger');
             small.classList.add('text-success');
+            return true
           } else {
             small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
+            return false
           }
       };
 
@@ -304,10 +310,12 @@ if (listTeddySelected == null){
               small.innerHTML = 'Adresse valide';
               small.classList.remove('text-danger');
               small.classList.add('text-success');
+              return true
             } else {
               small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
               small.classList.remove('text-success');
               small.classList.add('text-danger');
+              return false
             }
      };
 
@@ -347,10 +355,13 @@ if (listTeddySelected == null){
               small.innerHTML = 'Adresse valide';
               small.classList.remove('text-danger');
               small.classList.add('text-success');
+              return true
             } else {
-              small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse est invalide';
+              small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse email est invalide';
               small.classList.remove('text-success');
               small.classList.add('text-danger');
+              console.log(inputEmail.value)
+              return false
               }
       };
 
@@ -372,15 +383,23 @@ if (listTeddySelected == null){
       // Add event listener sur le bouton d'envoie du formulaire 
       ButtonSendForm.addEventListener("click", (e)=> {
         e.preventDefault();
-     
+        if (
+          validFirstName(document.querySelector("#firstname")) &&
+          validLastName(document.querySelector("#lastname")) &&
+          validAdress(document.querySelector("#address")) &&
+          validCity(document.querySelector("#city")) &&
+          validEmail(document.querySelector("#email"))
+        )
+          {
           const contact = {
-              firstName: document.querySelector("#firstname").value,
-              lastName: document.querySelector("#lastname").value,
-              address: document.querySelector("#address").value,
-              city: document.querySelector("#city").value,
-              email: document.querySelector("#email").value
-          };     
-      
+            firstName: document.querySelector("#firstname").value,
+            lastName: document.querySelector("#lastname").value,
+            address: document.querySelector("#address").value,
+            city: document.querySelector("#city").value,
+            email: document.querySelector("#email").value
+          }; 
+        
+             
           const options = {
               method: 'POST',
               headers: {
@@ -390,11 +409,9 @@ if (listTeddySelected == null){
                 contact, 
                 products
               })
-          }
+            }
      
         fetch('http://localhost:3000/api/teddies/order', options)
-
-        // 1er then => gère s'il y a une erreur // si il y a une erreur, cette erreur sera convertie en réponse json
             .then(function(response) {
                 if (!response.ok) {
                     throw Error(response.statusText);
@@ -409,6 +426,6 @@ if (listTeddySelected == null){
             .catch(function(error) {
                 console.log(error)
             })
-
+          }      
       });
-    };
+}
