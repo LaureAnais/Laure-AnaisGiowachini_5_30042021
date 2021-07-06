@@ -355,8 +355,8 @@ footer li
     .nav_bar {
         display: flex;
         flex-direction: column;
-        height: auto;
-        padding-bottom: 10px;
+        height: fit-content;
+        padding-bottom: 20px;
     }
 
     .nav {
@@ -364,6 +364,7 @@ footer li
     }
 
     .logo {
+        padding-top: 15px;
         height: 80px;
     }
     
