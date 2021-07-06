@@ -1,5 +1,3 @@
-
-
   function addBasket("Teddy_info"){
     let listTeddySelected = getBasket();
     // j'ajoute un teddy dans mon panier via .push
