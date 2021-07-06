@@ -3,7 +3,6 @@
   function addBasket("Teddy_info"){
     let listTeddySelected = getBasket();
     // j'ajoute un teddy dans mon panier via .push
-    // ici "Teddy_info" = est l'ID de l'article selectionné
     listTeddySelected.push("Teddy_info");
     // enregistre l'article qui vient d'etre ajouter et on lui passe le tableau d'article selectionné
     saveBasket(listTeddySelected);

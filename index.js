@@ -30,12 +30,12 @@ fetch('http://localhost:3000/api/teddies')
           domDiv.appendChild(domDiv3)
          
           console.log(data[i].name)
-          domNom = document.createElement("h3")
+          domNom = document.createElement("h2")
           domNom.className = "name_teddy";
           domNom.textContent = data[i].name
           domDiv3.appendChild(domNom)
           
-          domPrice = document.createElement("h4")
+          domPrice = document.createElement("h3")
           domPrice.textContent = data[i].price / 100 + " €"
           domPrice.className = "price_teddy";
           domDiv3.appendChild(domPrice)

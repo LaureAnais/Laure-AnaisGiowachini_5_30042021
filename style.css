@@ -27,7 +27,7 @@ section h1 {
     font-size: 14px;
 }
 
-h2 {
+h1 {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
@@ -110,7 +110,7 @@ main {
     line-height: 25px;   
 }
 
-#products h2 {
+#products h1 {
     font-size: 0.7cm;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -249,7 +249,7 @@ footer li
         height: 80px;
     }
     
-    #products h2 {
+    #products h1 {
         align-items: center;
         font-size: medium;
     }
