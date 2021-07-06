@@ -33,7 +33,7 @@ if (listTeddySelected == null){
       const main = document.getElementById("basket");
    
       // Création d'une div pour montrer les éléments du panier 
-      let mainDiv = document.createElement("section")
+      let mainDiv = document.createElement("section");
       mainDiv.className = "show_basket";
       main.appendChild(mainDiv)
 
@@ -43,33 +43,33 @@ if (listTeddySelected == null){
       mainDiv.appendChild(divShow)
 
       // Création d'une div image pour montrer l'image du teddy selectionné      
-      divImg = document.createElement("img")
+      divImg = document.createElement("img");
       divImg.setAttribute("src",basket[i].image)
       divImg.setAttribute("alt",basket[i].productName)
       divImg.className = "image_teddy";
       divShow.appendChild(divImg)
     
       // Création d'une div pour le nom du teddy selectionné
-      divName = document.createElement("h2")
+      divName = document.createElement("h2");
       divName.className = "name";
       divName.textContent = basket[i].productName;  
       divShow.appendChild(divName)
 
       // Création d'une div pour le prix du teddy selectionné
-      divPrice = document.createElement("span")
+      divPrice = document.createElement("span");
       divPrice.className = "price";
       divPrice.textContent = basket[i].price + " €";  
       totalAccount = totalAccount+Number(basket[i].price)
       divShow.appendChild(divPrice)
 
       // Création d'une div pour la quantité du teddy selectionné 
-      divQuantity = document.createElement("h3")
+      divQuantity = document.createElement("h3");
       divQuantity.className = "quantity";
       divQuantity.textContent = "Quantité selectionnée : " + basket[i].quantity + " "; 
       divShow.appendChild(divQuantity)
 
       // Création d'un bouton pour supprimer l'ourson selectionné 
-      const deleteTeddy = document.createElement("button")
+      const deleteTeddy = document.createElement("button");
       deleteTeddy.className = "btn_deleted";
       deleteTeddy.textContent = "Supprimer"
       divShow.appendChild(deleteTeddy);
@@ -91,7 +91,7 @@ if (listTeddySelected == null){
      // Creer une div ici pour afficher le montant total du panier 
      const TotalAccount = document.getElementsByTagName("main");
      
-     divTotalAccount = document.createElement('div')
+     divTotalAccount = document.createElement('div');
      divTotalAccount.className = "Total_Basket";
      divTotalAccount.textContent = "Montant total de votre commande :  " + totalAccount + " €";
      TotalAccount[0].appendChild(divTotalAccount)
@@ -101,12 +101,12 @@ if (listTeddySelected == null){
       // Création d'une div pour englober les boutons du panier 
       const ButtonBasket = document.getElementsByTagName("main");
 
-      let divButton = document.createElement("div")
+      let divButton = document.createElement("div");
       divButton.className = "basket_button";
       ButtonBasket[0].appendChild(divButton)
      
       // Création d'une div pour supprimer tout le panier 
-      let deleteDiv = document.createElement("div")
+      let deleteDiv = document.createElement("div");
       divButton.appendChild(deleteDiv)
       deleteDiv.className = "delete_all_basket";
       deleteDiv.textContent = "Supprimer le panier"
@@ -142,12 +142,12 @@ if (listTeddySelected == null){
       divFirstName.appendChild(firstName);
       firstName.setAttribute('type', 'text');
       firstName.setAttribute('id', 'firstname');
-      firstName.name = "Prénom"
+      firstName.name = "Prénom";
       firstName.required = true;
 
 
       // vérification des informations enregistrées - prénom
-      let pfirstname = document.createElement('p')
+      let pfirstname = document.createElement('p');
       pfirstname.setAttribute('id', 'pfirstname');
       divFirstName.appendChild(pfirstname);
       
@@ -158,25 +158,26 @@ if (listTeddySelected == null){
      
       const validFirstName = function (inputFirstName) {
         console.log(inputFirstName)
-        
-        let firstnameRegExp = new RegExp(
-        '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
 
-          // Test expression régulière
-          let testFirstName = firstnameRegExp.test(inputFirstName.value);
-          let small = document.getElementById('pfirstname')
-          if (testFirstName) {
-            small.innerHTML = 'Prénom valide';
-            small.classList.remove('text-danger');
-            small.classList.add('text-success');
-            return true
-          } else {
-            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
-            small.classList.remove('text-success');
-            small.classList.add('text-danger');
-            return false
-          }
-      };     
+          let firstnameRegExp = new RegExp(
+            '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+  
+            // Test expression régulière
+            let testFirstName = firstnameRegExp.test(inputFirstName.value);
+            let small = document.getElementById('pfirstname')
+            if (testFirstName) {
+              small.innerHTML = 'Prénom valide';
+              small.classList.remove('text-danger');
+              small.classList.add('text-success');
+              return true
+            } else {
+              small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+              small.classList.remove('text-success');
+              small.classList.add('text-danger');
+              return false
+            }
+        }
+        
       
       // Formulaire - Ajout du nom
       let divLastName = document.createElement("div");
@@ -195,7 +196,7 @@ if (listTeddySelected == null){
 
       // vérification des informations enregistrées - nom
             
-      let plastname = document.createElement('p')
+      let plastname = document.createElement('p');
       plastname.setAttribute('id', 'plastname');
       divLastName.appendChild(plastname);
       
@@ -229,7 +230,7 @@ if (listTeddySelected == null){
       let divAddress = document.createElement("div");
       divAddress.className = "form_adresse";
       divAddress.textContent = "Votre adresse : ";
-      divAddress.setAttribute("for","adresse")
+      divAddress.setAttribute("for","adresse");
       divForm.appendChild(divAddress)
 
       let address = document.createElement('textarea');
@@ -242,7 +243,7 @@ if (listTeddySelected == null){
 
       // vérification des informations enregistrées - adresse  
       
-      let paddress = document.createElement('p')
+      let paddress = document.createElement('p');
       paddress.setAttribute('id', 'paddress');
       divAddress.appendChild(paddress);
       
@@ -288,7 +289,7 @@ if (listTeddySelected == null){
       city.required = true;
       
       // vérification des informations enregistrées - city
-      let pcity = document.createElement('p')
+      let pcity = document.createElement('p');
       pcity.setAttribute('id', 'pcity');
       divCity.appendChild(pcity);
       
@@ -333,7 +334,7 @@ if (listTeddySelected == null){
         email.name = "Email"
         email.required = true;
 
-        let pemail = document.createElement('p')
+        let pemail = document.createElement('p');
         pemail.setAttribute('id', 'pemail');
         divEmail.appendChild(pemail);
         
@@ -350,7 +351,7 @@ if (listTeddySelected == null){
           )
             // Test expression régulière
             let testEmail = emailRegExp.test(inputEmail.value);
-            let small = document.getElementById('pemail')
+            let small = document.getElementById('pemail');
             if (testEmail) {
               small.innerHTML = 'Adresse valide';
               small.classList.remove('text-danger');
@@ -411,21 +412,22 @@ if (listTeddySelected == null){
               })
             }
      
-        fetch('http://localhost:3000/api/teddies/order', options)
-            .then(function(response) {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(function(value) {
-                localStorage.setItem("OrderID", value.orderId);
-                window.location = "confirmation_commande.html";
-                console.log("Order ID : ", JSON.stringify(value.orderId));
-            })
-            .catch(function(error) {
-                console.log(error)
-            })
+            fetch('http://localhost:3000/api/teddies/order', options)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(function(value) {
+                    localStorage.setItem("OrderID", value.orderId);
+                    localStorage.setItem("OrderPrice", totalAccount);
+                    window.location = "confirmation_commande.html";
+                    console.log("Order ID : ", JSON.stringify(value.orderId));
+                })
+                .catch(function(error) {
+                    console.log(error) 
+                })
           }      
       });
 }

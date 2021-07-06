@@ -31,7 +31,7 @@ fetch(url)
         DivGlobal.appendChild(DataGlobal)
 
         // Création de la div pour englober le nom et prix de l'ourson 
-        const domData = document.createElement("div")
+        const domData = document.createElement("div");
         domData.className="Info"
         DataGlobal.appendChild(domData)
 
@@ -40,21 +40,21 @@ fetch(url)
         domNom.textContent=data.name
         domData.appendChild(domNom)
 
-       const domPrice = document.createElement("span")
+       const domPrice = document.createElement("span");
        domPrice.className="Teddy_Price"
        domPrice.textContent=data.price / 100 + " €";
        domData.appendChild(domPrice)
 
        // Création div pour le choix de couleur de l'ourson 
-       const domForm = document.createElement("form")
+       const domForm = document.createElement("form");
        DataGlobal.appendChild(domForm)
        
-       const domColour = document.createElement("div")
+       const domColour = document.createElement("div");
        domColour.className="Teddy_Colour"
        domForm.appendChild(domColour)
         
        // Création d'un label pour indiquer le choix de couleur de l'ourson
-        const domlabel = document.createElement("label")
+        const domlabel = document.createElement("label");
         domColour.appendChild(domlabel)
         domlabel.textContent = "Choissisez sa couleur : ";
         domlabel.setAttribute('for' , "Choix de la couleur de " + data.name)
@@ -77,13 +77,13 @@ fetch(url)
         }
 
        // Création d'une div pour la description de l'ourson (texte)   
-       const domInfo = document.createElement("span")
+       const domInfo = document.createElement("span");
        domInfo.className="Teddy_Description"
        domInfo.textContent=data.description
        DataGlobal.appendChild(domInfo)
 
        // Création d'un bouton pour ajouter l'ourson au panier 
-       const addTeddy = document.createElement("button")
+       const addTeddy = document.createElement("button");
        addTeddy.className = "btn_like";
        addTeddy.textContent = "Ajoutez au panier"
        domForm.appendChild(addTeddy);
@@ -112,16 +112,21 @@ fetch(url)
             basket =  []
             basket.push(teddySelected);
             localStorage.setItem("listTeddySelected",JSON.stringify(basket))
+            alert("Cet article a été ajouté dans votre panier");
 
           } else {
             let basket = JSON.parse(listTeddySelected);
             basket.push(teddySelected);
             localStorage.setItem("listTeddySelected",JSON.stringify(basket))
+            alert("Cet article a été ajouté dans votre panier");
             }     
          
       })
-  }
-); 
+  })
+  .catch(error => {
+    document.getElementById('Teddy_info').textContent='Une erreur est survenue, merci de revenir à la page Accueil'
+  });
+
     
 
 
