@@ -24,5 +24,7 @@ Utilisation de vanilla javascript pour l'utilisation du DOM.
 2/ Test du code 
 Elaboration d'un plan de test sur 80% du code 
 
+
 URL de l'API : 
 Ours en peluche faits à la main : http://localhost:3000/api/teddies
+
