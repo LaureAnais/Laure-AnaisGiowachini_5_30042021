@@ -28,10 +28,3 @@ Elaboration d'un plan de test sur 80% du code
 URL de l'API : 
 Ours en peluche faits à la main : http://localhost:3000/api/teddies
 
-Pour tester le site en local : 
-Installation sur votre invite de commande : 
-
-npm install
-
-Lancer le port via node server depuis le fichier JWDP5-master dans votre invite de commande. 
-Puis ouvrir la page index.html 
