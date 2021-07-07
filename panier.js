@@ -298,7 +298,7 @@ if (listTeddySelected == null){
       const validCity = function (inputCity) {
           console.log(inputCity)
           
-          let cityRegExp = new RegExp("^[a-zA-Z]+$", "g");
+          let cityRegExp = new RegExp("^[a-zA-Z - ]+$", "g");
 
             // Test expression régulière
             let testCity = cityRegExp.test(inputCity.value);
