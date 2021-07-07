@@ -159,7 +159,7 @@ if (listTeddySelected == null){
       const validFirstName = function (inputFirstName) {
         console.log(inputFirstName)
 
-          let firstnameRegExp = new RegExp("^[a-zA-Z- ]+$", "g");
+          let firstnameRegExp = new RegExp("^[a-zA-Z-]+$","g");
   
             // Test expression régulière
             let testFirstName = firstnameRegExp.test(inputFirstName.value);
@@ -170,7 +170,7 @@ if (listTeddySelected == null){
               small.classList.add('text-success');
               return true
             } else {
-              small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+              small.innerHTML = "Merci de compléter les informations demandées ou de les vérifier (aucun chiffre ou symbole n'est autorisé)";
               small.classList.remove('text-success');
               small.classList.add('text-danger');
               return false
@@ -206,7 +206,7 @@ if (listTeddySelected == null){
      
       const validLastName = function (inputLastName) {
           console.log(inputLastName)
-          let lastnameRegExp = new RegExp("^[a-zA-Z- ]+$", "g");
+          let lastnameRegExp = new RegExp("^[a-zA-Z-]+$","g");
 
           // Test expression régulière
           let testLastName = lastnameRegExp.test(inputLastName.value);
@@ -217,7 +217,7 @@ if (listTeddySelected == null){
             small.classList.add('text-success');
             return true
           } else {
-            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+            small.innerHTML = "Merci de compléter les informations demandées ou de les vérifier (aucun chiffre ou symbole n'est autorisé)";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
             return false
@@ -253,7 +253,7 @@ if (listTeddySelected == null){
       const validAdress = function (inputAddress) { 
           console.log(inputAddress)
           
-          let addressRegExp = new RegExp("^[a-zA-Z0-9-]+$", "g");
+          let addressRegExp = new RegExp('^[a-zA-Z 0-9 -]+$','g');
 
           // Test expression régulière
           let testAddress = addressRegExp.test(inputAddress.value);
@@ -264,7 +264,7 @@ if (listTeddySelected == null){
             small.classList.add('text-success');
             return true
           } else {
-            small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+            small.innerHTML = "Merci de compléter les informations demandées ou de les vérifier (aucun chiffre ou symbole n'est autorisé)";
             small.classList.remove('text-success');
             small.classList.add('text-danger');
             return false
@@ -309,7 +309,7 @@ if (listTeddySelected == null){
               small.classList.add('text-success');
               return true
             } else {
-              small.innerHTML = "Merci de vérifier les informations remplies, aucun chiffre ou symbole n'est autorisé";
+              small.innerHTML = "Merci de compléter les informations demandées ou de les vérifier (aucun chiffre ou symbole n'est autorisé)";
               small.classList.remove('text-success');
               small.classList.add('text-danger');
               return false
@@ -354,7 +354,7 @@ if (listTeddySelected == null){
               small.classList.add('text-success');
               return true
             } else {
-              small.innerHTML = 'Merci de vérifier les informations remplies, votre adresse email est invalide';
+              small.innerHTML = "Merci de compléter votre adresse email ou de vérifier les informations remplies";
               small.classList.remove('text-success');
               small.classList.add('text-danger');
               console.log(inputEmail.value)
