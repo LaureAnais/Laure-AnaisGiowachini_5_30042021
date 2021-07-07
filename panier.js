@@ -159,8 +159,7 @@ if (listTeddySelected == null){
       const validFirstName = function (inputFirstName) {
         console.log(inputFirstName)
 
-          let firstnameRegExp = new RegExp(
-            '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+          let firstnameRegExp = new RegExp("^[a-zA-Z- ]+$", "g");
   
             // Test expression régulière
             let testFirstName = firstnameRegExp.test(inputFirstName.value);
@@ -207,8 +206,7 @@ if (listTeddySelected == null){
      
       const validLastName = function (inputLastName) {
           console.log(inputLastName)
-          let lastnameRegExp = new RegExp(
-          '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+          let lastnameRegExp = new RegExp("^[a-zA-Z- ]+$", "g");
 
           // Test expression régulière
           let testLastName = lastnameRegExp.test(inputLastName.value);
@@ -255,8 +253,7 @@ if (listTeddySelected == null){
       const validAdress = function (inputAddress) { 
           console.log(inputAddress)
           
-          let addressRegExp = new RegExp(
-          '(?<h>^[\d]+[ ])(?<s>.+$)|')
+          let addressRegExp = new RegExp("^[a-zA-Z0-9-]+$", "g");
 
           // Test expression régulière
           let testAddress = addressRegExp.test(inputAddress.value);
@@ -301,8 +298,7 @@ if (listTeddySelected == null){
       const validCity = function (inputCity) {
           console.log(inputCity)
           
-          let cityRegExp = new RegExp(
-            '^([a-zA-Z\u0080-\u024F]+(?:. |-| |))*[a-zA-Z\u0080-\u024F]*$', 'g')
+          let cityRegExp = new RegExp("^[a-zA-Z]+$", "g");
 
             // Test expression régulière
             let testCity = cityRegExp.test(inputCity.value);
